@@ -53,7 +53,7 @@ npx http-server -p 8080
 
 ## 担当者
 
-- 桐原 祐輔（yusuke.kirihara@sports-mario.jp）
+- 桐原 裕輔（yusuke.kirihara@sports-mario.jp）
 - 他3名（追加予定）
 
 ## 関連ドキュメント
