@@ -2,12 +2,46 @@
    応募フォーム専用スタイル
    =================================================================== */
 
-/* 応募区分カード（情報表示のみ、リンクなし） */
-.entry-card--info {
-  pointer-events: none;
+/* 応募区分カード（クリックで応募フォームへジャンプ） */
+.entry-card--clickable {
+  /* <button> のデフォルトスタイルをリセット */
+  appearance: none;
+  border: none;
+  background: inherit;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  width: 100%;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-.entry-card--info .entry-card-body {
-  pointer-events: auto;
+
+.entry-card--clickable:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+}
+
+.entry-card--clickable:focus-visible {
+  outline: 3px solid #7FCC30;
+  outline-offset: 4px;
+}
+
+.entry-card__cta {
+  display: inline-block;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1.5px solid #f0f0f0;
+  color: #7FCC30;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+.entry-card--clickable:hover .entry-card__cta {
+  color: #5da81f;
 }
 
 /* フォームラッパー */
@@ -94,6 +128,17 @@
   background: #fafafa;
   transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
   box-sizing: border-box;
+}
+
+/* カード選択後のハイライトアニメーション */
+@keyframes highlightFlash {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(127, 204, 48, 0); }
+  30% { box-shadow: 0 0 0 6px rgba(127, 204, 48, 0.35); }
+}
+.highlight-flash {
+  animation: highlightFlash 1.2s ease-out;
+  border-color: #7FCC30 !important;
+  background: #ffffff !important;
 }
 
 .form-group input:focus,

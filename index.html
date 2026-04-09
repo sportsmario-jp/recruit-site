@@ -1038,9 +1038,9 @@
         <p class="section-lead">下記フォームより応募区分を選んでお気軽にご応募ください。担当者より2〜5営業日以内にご連絡いたします。</p>
       </div>
 
-      <!-- 応募区分カード（情報表示のみ） -->
+      <!-- 応募区分カード（クリックでフォームの応募区分を自動選択） -->
       <div class="entry-grid" data-animate="fade-up">
-        <div class="entry-card entry-card--info">
+        <button type="button" class="entry-card entry-card--clickable" data-category-select="新卒採用">
           <div class="entry-card-header entry-card--new">
             <span class="entry-badge">2027年度</span>
             <h3>新卒採用</h3>
@@ -1051,10 +1051,11 @@
               <dt>対象</dt><dd>2027年3月卒業見込みの方</dd>
               <dt>職種</dt><dd>店舗販売 / EC事業</dd>
             </dl>
+            <span class="entry-card__cta">このカテゴリで応募する →</span>
           </div>
-        </div>
+        </button>
 
-        <div class="entry-card entry-card--info">
+        <button type="button" class="entry-card entry-card--clickable" data-category-select="中途・キャリア採用">
           <div class="entry-card-header entry-card--career">
             <span class="entry-badge">通年募集</span>
             <h3>中途・キャリア</h3>
@@ -1065,10 +1066,11 @@
               <dt>対象</dt><dd>未経験でも情熱があればOK</dd>
               <dt>職種</dt><dd>店舗販売 / EC / バイヤー / VMD</dd>
             </dl>
+            <span class="entry-card__cta">このカテゴリで応募する →</span>
           </div>
-        </div>
+        </button>
 
-        <div class="entry-card entry-card--info">
+        <button type="button" class="entry-card entry-card--clickable" data-category-select="SMSA採用">
           <div class="entry-card-header entry-card--ssma">
             <span class="entry-badge">NEW</span>
             <h3>SMSA</h3>
@@ -1079,10 +1081,11 @@
               <dt>対象</dt><dd>SNS発信者（目安1,000フォロワー〜）</dd>
               <dt>特典</dt><dd>タレント手当 / 商品企画参画</dd>
             </dl>
+            <span class="entry-card__cta">このカテゴリで応募する →</span>
           </div>
-        </div>
+        </button>
 
-        <div class="entry-card entry-card--info">
+        <button type="button" class="entry-card entry-card--clickable" data-category-select="アルバイト・パート">
           <div class="entry-card-header entry-card--part">
             <span class="entry-badge">各店舗</span>
             <h3>アルバイト・パート</h3>
@@ -1093,8 +1096,9 @@
               <dt>時給</dt><dd>1,200円〜（店舗による）</dd>
               <dt>勤務</dt><dd>週2日〜、1日4時間〜応相談</dd>
             </dl>
+            <span class="entry-card__cta">このカテゴリで応募する →</span>
           </div>
-        </div>
+        </button>
       </div>
 
       <!-- ============ 応募フォーム ============ -->

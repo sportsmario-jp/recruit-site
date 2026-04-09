@@ -45,6 +45,22 @@
     categorySelect.addEventListener('change', updateConditionalFields);
   }
 
+  // 応募区分カードクリック → 区分を自動選択 + フォームへスクロール
+  document.querySelectorAll('[data-category-select]').forEach((card) => {
+    card.addEventListener('click', function () {
+      const category = this.getAttribute('data-category-select');
+      if (!category || !categorySelect) return;
+      categorySelect.value = category;
+      updateConditionalFields();
+      // フォーム先頭までスムーズスクロール
+      const target = document.querySelector('.application-form-wrap') || form;
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // 視覚的フィードバック（カテゴリ選択欄を一瞬ハイライト）
+      categorySelect.classList.add('highlight-flash');
+      setTimeout(() => categorySelect.classList.remove('highlight-flash'), 1200);
+    });
+  });
+
   // URL パラメータから店舗ID / カテゴリを初期セット
   try {
     const hash = window.location.hash;
