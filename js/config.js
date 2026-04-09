@@ -8,7 +8,7 @@ window.SMSA_CONFIG = {
   // Google Apps Script Web App URL
   // デプロイ後にここを書き換えてください
   // 形式: 'https://script.google.com/macros/s/XXXXXXXXXXXXXX/exec'
-  FORM_ENDPOINT: '',
+  FORM_ENDPOINT: 'https://script.google.com/macros/s/AKfycbyJ_QP4YIIYIV1dstwmdSIhlg1Hq0AGu0QFEmc6XOYx5oQgUefx6tufk_-Nn7xoV1_Ijw/exec',
 
   // フォーム送信後の挙動
   SUCCESS_MESSAGE: 'ご応募ありがとうございました。担当者より2〜5営業日以内にご連絡いたします。',
