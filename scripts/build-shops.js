@@ -64,6 +64,49 @@ function render(template, data) {
   );
 }
 
+// ---------- 共通ヘッダー / フッター ----------
+
+/**
+ * 共通ヘッダー（TOPページと同じ構造）
+ * @param {string} currentPage - 'list' | 'detail'（現在ページ種別）
+ */
+function renderHeader(currentPage) {
+  // shops/ 配下から index.html への相対パスは常に ../index.html
+  return `  <header class="site-header" id="header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <img src="../images/logo.svg" alt="SPORTS MARIO" class="logo-img">
+        <span class="logo-recruit-sub">新卒、キャリア、アルバイト、パート採用サイト</span>
+      </a>
+      <nav class="global-nav" id="globalNav">
+        <ul class="nav-list">
+          <li><a href="../index.html#numbers">NUMBERS</a></li>
+          <li><a href="../index.html#vision">VISION</a></li>
+          <li><a href="../index.html#reward">REWARD</a></li>
+          <li><a href="../index.html#fff">FFF</a></li>
+          <li><a href="../index.html#smsa">SMSA</a></li>
+          <li><a href="../index.html#career">CAREER</a></li>
+          <li><a href="../index.html#work">WORK</a></li>
+          <li><a href="index.html"${currentPage === 'list' ? ' class="nav-current"' : ''}>SHOPS</a></li>
+          <li><a href="../index.html#entry" class="nav-cta">ENTRY</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>`;
+}
+
+function renderFooter() {
+  return `  <footer class="site-footer">
+    <div class="footer-inner">
+      <img src="../images/logo-footer.svg" alt="スポーツマリオ" class="footer-logo">
+      <p>&copy; Sports Mario Co., Ltd.</p>
+    </div>
+  </footer>`;
+}
+
 // ---------- ジョブHTML生成 ----------
 
 function renderJob(job) {
@@ -113,18 +156,7 @@ function renderShopPage(shop, brands) {
   <link rel="stylesheet" href="../shops.css">
 </head>
 <body class="shop-detail-page">
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="../index.html" class="logo-link">
-        <img src="../images/logo.svg" alt="スポーツマリオ" class="logo">
-      </a>
-      <nav class="site-nav">
-        <a href="../index.html">TOP</a>
-        <a href="index.html">店舗一覧</a>
-        <a href="../index.html#entry">応募する</a>
-      </nav>
-    </div>
-  </header>
+${renderHeader('detail')}
 
   <main class="shop-main">
     <section class="shop-hero" style="--brand-color: ${brand.color};">
@@ -175,12 +207,8 @@ function renderShopPage(shop, brands) {
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <img src="../images/logo-footer.svg" alt="スポーツマリオ" class="footer-logo">
-      <p>&copy; Sports Mario Co., Ltd.</p>
-    </div>
-  </footer>
+${renderFooter()}
+  <script src="../script.js"></script>
 </body>
 </html>
 `;
@@ -248,18 +276,7 @@ function renderShopsIndex(shops, brands) {
   <link rel="stylesheet" href="../shops.css">
 </head>
 <body class="shops-index-page">
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="../index.html" class="logo-link">
-        <img src="../images/logo.svg" alt="スポーツマリオ" class="logo">
-      </a>
-      <nav class="site-nav">
-        <a href="../index.html">TOP</a>
-        <a href="index.html" class="active">店舗一覧</a>
-        <a href="../index.html#entry">応募する</a>
-      </nav>
-    </div>
-  </header>
+${renderHeader('list')}
 
   <main>
     <section class="shops-hero">
@@ -272,12 +289,8 @@ function renderShopsIndex(shops, brands) {
     ${sections}
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <img src="../images/logo-footer.svg" alt="スポーツマリオ" class="footer-logo">
-      <p>&copy; Sports Mario Co., Ltd.</p>
-    </div>
-  </footer>
+${renderFooter()}
+  <script src="../script.js"></script>
 </body>
 </html>
 `;

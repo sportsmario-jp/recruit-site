@@ -9,16 +9,28 @@
   <link rel="stylesheet" href="../shops.css">
 </head>
 <body class="shop-detail-page">
-  <header class="site-header">
+  <header class="site-header" id="header">
     <div class="header-inner">
-      <a href="../index.html" class="logo-link">
-        <img src="../images/logo.svg" alt="スポーツマリオ" class="logo">
+      <a href="../index.html" class="logo">
+        <img src="../images/logo.svg" alt="SPORTS MARIO" class="logo-img">
+        <span class="logo-recruit-sub">新卒、キャリア、アルバイト、パート採用サイト</span>
       </a>
-      <nav class="site-nav">
-        <a href="../index.html">TOP</a>
-        <a href="index.html">店舗一覧</a>
-        <a href="../index.html#entry">応募する</a>
+      <nav class="global-nav" id="globalNav">
+        <ul class="nav-list">
+          <li><a href="../index.html#numbers">NUMBERS</a></li>
+          <li><a href="../index.html#vision">VISION</a></li>
+          <li><a href="../index.html#reward">REWARD</a></li>
+          <li><a href="../index.html#fff">FFF</a></li>
+          <li><a href="../index.html#smsa">SMSA</a></li>
+          <li><a href="../index.html#career">CAREER</a></li>
+          <li><a href="../index.html#work">WORK</a></li>
+          <li><a href="index.html">SHOPS</a></li>
+          <li><a href="../index.html#entry" class="nav-cta">ENTRY</a></li>
+        </ul>
       </nav>
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
@@ -113,5 +125,6 @@
       <p>&copy; Sports Mario Co., Ltd.</p>
     </div>
   </footer>
+  <script src="../script.js"></script>
 </body>
 </html>
