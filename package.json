@@ -1,0 +1,21 @@
+{
+  "name": "sportsmario-recruit",
+  "version": "1.0.0",
+  "description": "スポーツマリオ 採用サイト",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build-shops.js",
+    "build:shops": "node scripts/build-shops.js",
+    "dev": "http-server -p 8080 -c-1",
+    "start": "http-server -p 8080 -c-1"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sportsmario-jp/recruit-site.git"
+  },
+  "author": "Sports Mario Co., Ltd.",
+  "license": "UNLICENSED"
+}

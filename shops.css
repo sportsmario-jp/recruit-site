@@ -1,0 +1,522 @@
+/* ===================================================================
+   店舗一覧・詳細ページ専用スタイル
+   （styles.css の共通スタイルをベースに拡張）
+   =================================================================== */
+
+/* ---------- ヘッダー ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(15, 15, 15, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+.logo-link .logo {
+  height: 40px;
+}
+
+.site-nav {
+  display: flex;
+  gap: 32px;
+}
+
+.site-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 8px 0;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.site-nav a:hover,
+.site-nav a.active {
+  border-bottom-color: #7FCC30;
+}
+
+/* ---------- 店舗一覧ヒーロー ---------- */
+.shops-hero {
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+  color: #fff;
+  padding: 100px 24px 80px;
+  text-align: center;
+}
+
+.shops-hero__inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.shops-hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin: 0 0 24px;
+  letter-spacing: 0.02em;
+}
+
+.shops-hero p {
+  font-size: 1.1rem;
+  color: #ccc;
+  line-height: 1.8;
+}
+
+/* ---------- 業態別セクション ---------- */
+.brand-section {
+  padding: 80px 24px;
+  border-top: 4px solid var(--brand-color, #00c853);
+}
+
+.brand-section:nth-child(even) {
+  background: #f8f8f8;
+}
+
+.brand-section__header {
+  max-width: 1200px;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+
+.brand-section__title {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: var(--brand-color, #00c853);
+  margin: 0 0 12px;
+  letter-spacing: 0.05em;
+}
+
+.brand-section__tagline {
+  font-size: 1.05rem;
+  color: #555;
+  margin: 0;
+}
+
+/* ---------- 店舗カードグリッド ---------- */
+.shop-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 32px;
+}
+
+.shop-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.shop-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+.shop-card__image {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #333 center/cover no-repeat;
+  display: flex;
+  align-items: flex-end;
+}
+
+.shop-card__brand {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: var(--brand-color, #00c853);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.shop-card__body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.shop-card__name {
+  font-size: 1.2rem;
+  margin: 0 0 8px;
+  color: #111;
+}
+
+.shop-card__access {
+  font-size: 0.88rem;
+  color: #666;
+  margin: 0 0 16px;
+  flex: 1;
+}
+
+.shop-card__jobs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.job-tag {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.job-tag--fulltime {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.job-tag--parttime {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.job-tag--contract {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.shop-card__more {
+  font-size: 0.9rem;
+  color: var(--brand-color, #00c853);
+  font-weight: 600;
+}
+
+/* ---------- 店舗詳細ページ ---------- */
+.shop-hero {
+  background: linear-gradient(135deg, #0f0f0f 0%, #222 100%);
+  color: #fff;
+  padding: 100px 24px 80px;
+  text-align: center;
+  border-bottom: 6px solid var(--brand-color, #00c853);
+}
+
+.shop-hero__inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.shop-brand-badge {
+  display: inline-block;
+  background: var(--brand-color, #00c853);
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 24px;
+}
+
+.shop-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin: 0 0 16px;
+  letter-spacing: 0.02em;
+}
+
+.shop-tagline {
+  font-size: 1.1rem;
+  color: #aaa;
+  margin: 0;
+}
+
+.shop-info {
+  padding: 80px 24px;
+  background: #fafafa;
+}
+
+.shop-info__inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.shop-info h2 {
+  font-size: 1.8rem;
+  margin: 0 0 24px;
+  color: #111;
+  border-left: 4px solid var(--brand-color, #00c853);
+  padding-left: 16px;
+}
+
+.shop-info h2:not(:first-child) {
+  margin-top: 56px;
+}
+
+.shop-description {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: #333;
+  margin-bottom: 32px;
+}
+
+.shop-meta dl {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 12px 24px;
+  background: #fff;
+  padding: 24px 32px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.shop-meta dt {
+  font-weight: 600;
+  color: #666;
+  font-size: 0.9rem;
+  padding-top: 4px;
+}
+
+.shop-meta dd {
+  margin: 0;
+  color: #111;
+}
+
+.shop-appeal {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.shop-appeal li {
+  background: #fff;
+  padding: 16px 20px 16px 44px;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.shop-appeal li::before {
+  content: '✓';
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--brand-color, #00c853);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+/* ---------- 募集職種 ---------- */
+.shop-jobs {
+  padding: 80px 24px;
+  background: #fff;
+}
+
+.shop-jobs__inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.shop-jobs h2 {
+  font-size: 1.8rem;
+  margin: 0 0 40px;
+  color: #111;
+  text-align: center;
+}
+
+.job-cards {
+  display: grid;
+  gap: 24px;
+}
+
+.job-card {
+  background: #fafafa;
+  border-radius: 16px;
+  padding: 32px;
+  border-left: 6px solid #00c853;
+}
+
+.job-card--parttime {
+  border-left-color: #ff9800;
+}
+
+.job-card--contract {
+  border-left-color: #2196f3;
+}
+
+.job-card__header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.job-type-badge {
+  background: #111;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.job-position {
+  margin: 0;
+  font-size: 1.4rem;
+  color: #111;
+}
+
+.job-details {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 16px 24px;
+  margin-bottom: 24px;
+}
+
+.job-details dt {
+  font-weight: 600;
+  color: #666;
+  font-size: 0.9rem;
+  padding-top: 4px;
+}
+
+.job-details dd {
+  margin: 0;
+  color: #111;
+}
+
+.job-list {
+  list-style: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.job-list li {
+  margin-bottom: 6px;
+  line-height: 1.6;
+}
+
+.job-entry-btn {
+  display: inline-block;
+  background: #00c853;
+  color: #fff;
+  text-decoration: none;
+  padding: 14px 32px;
+  border-radius: 30px;
+  font-weight: 700;
+  transition: background 0.2s;
+}
+
+.job-entry-btn:hover {
+  background: #00a844;
+}
+
+/* ---------- 応募CTAセクション ---------- */
+.shop-entry {
+  padding: 80px 24px;
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+  color: #fff;
+  text-align: center;
+}
+
+.shop-entry__inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.shop-entry h2 {
+  font-size: 2rem;
+  margin: 0 0 16px;
+}
+
+.shop-entry p {
+  font-size: 1.05rem;
+  color: #ccc;
+  margin: 0 0 32px;
+  line-height: 1.8;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: #7FCC30;
+  color: #0f0f0f;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 30px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(127, 204, 48, 0.4);
+}
+
+.btn-large {
+  padding: 18px 48px;
+  font-size: 1.1rem;
+}
+
+/* ---------- フッター ---------- */
+.site-footer {
+  background: #0a0a0a;
+  color: #888;
+  padding: 40px 24px;
+  text-align: center;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-logo {
+  height: 36px;
+  margin-bottom: 16px;
+  opacity: 0.7;
+}
+
+.site-footer p {
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+/* ---------- レスポンシブ ---------- */
+@media (max-width: 768px) {
+  .site-nav {
+    gap: 16px;
+  }
+  .site-nav a {
+    font-size: 0.85rem;
+  }
+  .shop-meta dl,
+  .job-details {
+    grid-template-columns: 1fr;
+    gap: 4px 0;
+  }
+  .shop-meta dt,
+  .job-details dt {
+    padding-top: 12px;
+    font-size: 0.8rem;
+  }
+  .job-card {
+    padding: 24px 20px;
+  }
+}

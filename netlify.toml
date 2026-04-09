@@ -1,0 +1,28 @@
+# Netlify ビルド設定
+# https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[build]
+  # ビルドコマンド: shops.json から店舗ページを生成
+  command = "node scripts/build-shops.js"
+  # 公開ディレクトリ（ルート）
+  publish = "."
+
+[build.environment]
+  # Node.js バージョン
+  NODE_VERSION = "20"
+
+# リダイレクト・リライトのルール
+# 例: 旧URLを新URLに転送する場合
+# [[redirects]]
+#   from = "/old-path/*"
+#   to = "/new-path/:splat"
+#   status = 301
+
+# セキュリティヘッダー
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"

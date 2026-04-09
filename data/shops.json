@@ -1,0 +1,382 @@
+{
+  "meta": {
+    "lastUpdated": "2026-04-09",
+    "version": "1.0.0",
+    "note": "8店舗分のテンプレート。実データは旧 /recruit/ から順次移行"
+  },
+  "brands": {
+    "standon": {
+      "label": "STAND ON",
+      "tagline": "スポーティーファッション販売",
+      "color": "#00c853"
+    },
+    "run-fitness": {
+      "label": "RUN & FITNESS",
+      "tagline": "ランニング・フィットネス販売",
+      "color": "#00b8d4"
+    },
+    "baseball-mario": {
+      "label": "BASEBALL MARIO",
+      "tagline": "野球専門店",
+      "color": "#d50000"
+    },
+    "mario-select": {
+      "label": "MARIO SELECT",
+      "tagline": "セレクトショップ・EC",
+      "color": "#7FCC30"
+    }
+  },
+  "shops": [
+    {
+      "id": "shimokitazawa",
+      "active": true,
+      "name": "STAND ON 下北沢店",
+      "brand": "standon",
+      "brandLabel": "STAND ON",
+      "address": "東京都世田谷区北沢2-XX-XX",
+      "access": "小田急線・京王井の頭線 下北沢駅 徒歩2分",
+      "phone": "",
+      "businessHours": "11:00〜21:00",
+      "holidays": "不定休",
+      "description": "下北沢の街に溶け込むスポーティーファッションの発信基地。トレンドとスポーツの融合をテーマに、若年層を中心にファンを広げています。",
+      "appeal": [
+        "下北沢エリアの若い世代に人気",
+        "SNS発信に力を入れる店舗文化",
+        "ファッションとスポーツ両方の知識が身につく",
+        "スタッフの個性を尊重する自由な雰囲気"
+      ],
+      "jobs": [
+        {
+          "type": "fulltime",
+          "position": "店舗販売スタッフ",
+          "salary": {
+            "type": "monthly",
+            "min": 220000,
+            "max": 350000,
+            "note": "経験・等級により優遇"
+          },
+          "hours": "シフト制 実働8時間",
+          "benefits": [
+            "社会保険完備",
+            "交通費全額支給",
+            "社員割引",
+            "昇給年1回",
+            "業績給・利益還元制度"
+          ],
+          "requirements": [
+            "ファッション・スポーツに興味がある方",
+            "接客経験者歓迎"
+          ]
+        },
+        {
+          "type": "parttime",
+          "position": "アルバイト・パート",
+          "salary": {
+            "type": "hourly",
+            "min": 1200,
+            "note": "昇給あり"
+          },
+          "hours": "週2日〜、1日4時間〜応相談",
+          "benefits": [
+            "交通費支給",
+            "社員割引",
+            "シフト自由度高め"
+          ]
+        }
+      ],
+      "images": {
+        "hero": "images/shops/shimokitazawa-hero.jpg",
+        "gallery": []
+      }
+    },
+    {
+      "id": "shop-02",
+      "active": true,
+      "name": "【店舗名2】",
+      "brand": "standon",
+      "brandLabel": "STAND ON",
+      "address": "【住所】",
+      "access": "【アクセス】",
+      "phone": "",
+      "businessHours": "【営業時間】",
+      "holidays": "",
+      "description": "【店舗説明文をここに記入】",
+      "appeal": [
+        "【魅力ポイント1】",
+        "【魅力ポイント2】",
+        "【魅力ポイント3】"
+      ],
+      "jobs": [
+        {
+          "type": "fulltime",
+          "position": "店舗販売スタッフ",
+          "salary": {
+            "type": "monthly",
+            "min": 220000,
+            "max": 350000,
+            "note": "経験・等級により優遇"
+          },
+          "hours": "シフト制 実働8時間",
+          "benefits": [
+            "社会保険完備",
+            "交通費全額支給",
+            "社員割引",
+            "昇給年1回"
+          ]
+        },
+        {
+          "type": "parttime",
+          "position": "アルバイト・パート",
+          "salary": {
+            "type": "hourly",
+            "min": 1200
+          },
+          "hours": "週2日〜、1日4時間〜応相談",
+          "benefits": [
+            "交通費支給",
+            "社員割引"
+          ]
+        }
+      ],
+      "images": {
+        "hero": "images/shops/placeholder.jpg"
+      }
+    },
+    {
+      "id": "shop-03",
+      "active": true,
+      "name": "【店舗名3】",
+      "brand": "run-fitness",
+      "brandLabel": "RUN & FITNESS",
+      "address": "【住所】",
+      "access": "【アクセス】",
+      "phone": "",
+      "businessHours": "【営業時間】",
+      "holidays": "",
+      "description": "【店舗説明文をここに記入】",
+      "appeal": [
+        "ランニング・フィットネス専門",
+        "専門知識が身につく",
+        "健康志向のお客様が多い"
+      ],
+      "jobs": [
+        {
+          "type": "fulltime",
+          "position": "店舗販売スタッフ",
+          "salary": {
+            "type": "monthly",
+            "min": 220000,
+            "max": 350000
+          },
+          "hours": "シフト制 実働8時間",
+          "benefits": [
+            "社会保険完備",
+            "交通費全額支給",
+            "社員割引"
+          ]
+        }
+      ],
+      "images": {
+        "hero": "images/shops/placeholder.jpg"
+      }
+    },
+    {
+      "id": "shop-04",
+      "active": true,
+      "name": "【店舗名4】",
+      "brand": "run-fitness",
+      "brandLabel": "RUN & FITNESS",
+      "address": "【住所】",
+      "access": "【アクセス】",
+      "phone": "",
+      "businessHours": "【営業時間】",
+      "holidays": "",
+      "description": "【店舗説明文をここに記入】",
+      "appeal": [
+        "【魅力ポイント1】",
+        "【魅力ポイント2】"
+      ],
+      "jobs": [
+        {
+          "type": "fulltime",
+          "position": "店舗販売スタッフ",
+          "salary": {
+            "type": "monthly",
+            "min": 220000,
+            "max": 350000
+          },
+          "hours": "シフト制 実働8時間",
+          "benefits": [
+            "社会保険完備",
+            "交通費全額支給",
+            "社員割引"
+          ]
+        }
+      ],
+      "images": {
+        "hero": "images/shops/placeholder.jpg"
+      }
+    },
+    {
+      "id": "shop-05",
+      "active": true,
+      "name": "【店舗名5】",
+      "brand": "baseball-mario",
+      "brandLabel": "BASEBALL MARIO",
+      "address": "【住所】",
+      "access": "【アクセス】",
+      "phone": "",
+      "businessHours": "【営業時間】",
+      "holidays": "",
+      "description": "アメブロ月間30万PV、「野球」カテゴリーで日本一の発信力を持つ野球専門店。",
+      "appeal": [
+        "野球専門の圧倒的な専門性",
+        "都外からわざわざ来店するファン多数",
+        "SNS・ブログ発信が強み"
+      ],
+      "jobs": [
+        {
+          "type": "fulltime",
+          "position": "店舗販売スタッフ",
+          "salary": {
+            "type": "monthly",
+            "min": 220000,
+            "max": 350000,
+            "note": "野球経験者歓迎"
+          },
+          "hours": "シフト制 実働8時間",
+          "benefits": [
+            "社会保険完備",
+            "交通費全額支給",
+            "社員割引"
+          ],
+          "requirements": [
+            "野球経験者（プレー経験問わず）",
+            "野球が好きな方"
+          ]
+        }
+      ],
+      "images": {
+        "hero": "images/shops/placeholder.jpg"
+      }
+    },
+    {
+      "id": "shop-06",
+      "active": true,
+      "name": "【店舗名6】",
+      "brand": "standon",
+      "brandLabel": "STAND ON",
+      "address": "【住所】",
+      "access": "【アクセス】",
+      "phone": "",
+      "businessHours": "【営業時間】",
+      "holidays": "",
+      "description": "【店舗説明文をここに記入】",
+      "appeal": [
+        "【魅力ポイント1】",
+        "【魅力ポイント2】"
+      ],
+      "jobs": [
+        {
+          "type": "fulltime",
+          "position": "店舗販売スタッフ",
+          "salary": {
+            "type": "monthly",
+            "min": 220000,
+            "max": 350000
+          },
+          "hours": "シフト制 実働8時間",
+          "benefits": [
+            "社会保険完備",
+            "交通費全額支給",
+            "社員割引"
+          ]
+        }
+      ],
+      "images": {
+        "hero": "images/shops/placeholder.jpg"
+      }
+    },
+    {
+      "id": "shop-07",
+      "active": true,
+      "name": "【店舗名7】",
+      "brand": "standon",
+      "brandLabel": "STAND ON",
+      "address": "【住所】",
+      "access": "【アクセス】",
+      "phone": "",
+      "businessHours": "【営業時間】",
+      "holidays": "",
+      "description": "【店舗説明文をここに記入】",
+      "appeal": [
+        "【魅力ポイント1】",
+        "【魅力ポイント2】"
+      ],
+      "jobs": [
+        {
+          "type": "fulltime",
+          "position": "店舗販売スタッフ",
+          "salary": {
+            "type": "monthly",
+            "min": 220000,
+            "max": 350000
+          },
+          "hours": "シフト制 実働8時間",
+          "benefits": [
+            "社会保険完備",
+            "交通費全額支給",
+            "社員割引"
+          ]
+        }
+      ],
+      "images": {
+        "hero": "images/shops/placeholder.jpg"
+      }
+    },
+    {
+      "id": "shop-08",
+      "active": true,
+      "name": "マリオセレクト / EC事業部",
+      "brand": "mario-select",
+      "brandLabel": "MARIO SELECT",
+      "address": "本社 / EC運営拠点",
+      "access": "【最寄り駅】",
+      "phone": "",
+      "businessHours": "10:00〜19:00",
+      "holidays": "土日祝",
+      "description": "「売れるものを仕入れる」から「売れるものをつくる」へ。品揃え設計、アンバサダーとの商品共創、店舗VMDの企画・ディレクション、SNS・動画のクリエイティブ制作。",
+      "appeal": [
+        "EC・マーチャンダイジング業務",
+        "商品企画・ブランディング",
+        "SNS・動画クリエイティブ"
+      ],
+      "jobs": [
+        {
+          "type": "fulltime",
+          "position": "EC事業スタッフ / MD",
+          "salary": {
+            "type": "monthly",
+            "min": 240000,
+            "max": 400000,
+            "note": "経験により優遇"
+          },
+          "hours": "10:00〜19:00",
+          "benefits": [
+            "社会保険完備",
+            "交通費全額支給",
+            "社員割引",
+            "土日休み"
+          ],
+          "requirements": [
+            "EC運営経験者歓迎",
+            "マーチャンダイジング経験者歓迎"
+          ]
+        }
+      ],
+      "images": {
+        "hero": "images/shops/placeholder.jpg"
+      }
+    }
+  ]
+}
