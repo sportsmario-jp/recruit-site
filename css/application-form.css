@@ -1,0 +1,224 @@
+/* ===================================================================
+   応募フォーム専用スタイル
+   =================================================================== */
+
+/* 応募区分カード（情報表示のみ、リンクなし） */
+.entry-card--info {
+  pointer-events: none;
+}
+.entry-card--info .entry-card-body {
+  pointer-events: auto;
+}
+
+/* フォームラッパー */
+.application-form-wrap {
+  margin-top: 64px;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 56px 48px;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.08);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.application-form-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.application-form-header h3 {
+  font-size: 1.8rem;
+  margin: 0 0 8px;
+  color: #111;
+  letter-spacing: 0.04em;
+}
+
+.application-form-header p {
+  font-size: 0.9rem;
+  color: #888;
+  margin: 0;
+}
+
+/* honeypot（ボット対策・画面上完全非表示） */
+.hp-field {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
+/* フォーム基本 */
+.application-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+  letter-spacing: 0.02em;
+}
+
+.req {
+  color: #e53935;
+  font-weight: 700;
+  margin-left: 2px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="url"],
+.form-group input[type="number"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: inherit;
+  color: #111;
+  background: #fafafa;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #7FCC30;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(127, 204, 48, 0.12);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 140px;
+  line-height: 1.7;
+}
+
+.form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23666'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 24px;
+  padding-right: 44px;
+}
+
+/* 2カラム・3カラム */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.form-row--3col {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* 同意チェック */
+.form-group--consent {
+  background: #f8f8f8;
+  padding: 20px 24px;
+  border-radius: 12px;
+  border-left: 4px solid #7FCC30;
+}
+
+.consent-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.consent-label input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #7FCC30;
+}
+
+.form-note {
+  font-size: 0.82rem;
+  color: #666;
+  margin: 10px 0 0 32px;
+  line-height: 1.6;
+}
+
+/* ステータス表示 */
+.form-status {
+  padding: 16px 20px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
+.form-status--loading {
+  background: #e3f2fd;
+  color: #1565c0;
+  border-left: 4px solid #1565c0;
+}
+
+.form-status--success {
+  background: #e8f5e9;
+  color: #1b5e20;
+  border-left: 4px solid #2e7d32;
+  font-weight: 600;
+}
+
+.form-status--error {
+  background: #ffebee;
+  color: #b71c1c;
+  border-left: 4px solid #c62828;
+}
+
+/* 送信ボタン */
+.form-actions {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.form-actions .btn {
+  min-width: 280px;
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+  .application-form-wrap {
+    padding: 32px 20px;
+    margin-top: 40px;
+    border-radius: 16px;
+  }
+  .application-form-header h3 {
+    font-size: 1.4rem;
+  }
+  .form-row,
+  .form-row--3col {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .form-note {
+    margin-left: 0;
+  }
+  .form-actions .btn {
+    width: 100%;
+    min-width: auto;
+  }
+}

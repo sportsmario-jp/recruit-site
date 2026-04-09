@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/application-form.css">
 </head>
 <body>
 
@@ -1034,10 +1035,12 @@
       <div class="section-header" data-animate="fade-up">
         <p class="section-en">ENTRY</p>
         <h2 class="section-title">一緒に、次のステージへ</h2>
+        <p class="section-lead">下記フォームより応募区分を選んでお気軽にご応募ください。担当者より2〜5営業日以内にご連絡いたします。</p>
       </div>
 
-      <div class="entry-grid">
-        <div class="entry-card" data-animate="fade-up" data-delay="0">
+      <!-- 応募区分カード（情報表示のみ） -->
+      <div class="entry-grid" data-animate="fade-up">
+        <div class="entry-card entry-card--info">
           <div class="entry-card-header entry-card--new">
             <span class="entry-badge">2027年度</span>
             <h3>新卒採用</h3>
@@ -1046,52 +1049,213 @@
             <p>スポーツが好き、ファッションが好き、人と話すのが好き。<br>その「好き」を専門性に変える4年間が始まります。</p>
             <dl class="entry-meta">
               <dt>対象</dt><dd>2027年3月卒業見込みの方</dd>
-              <dt>職種</dt><dd>店舗販売スタッフ / EC事業スタッフ</dd>
+              <dt>職種</dt><dd>店舗販売 / EC事業</dd>
             </dl>
-            <a href="https://sportsmario.co.jp/recruit/entry2026graduate/" class="btn btn-primary btn-block" target="_blank">新卒エントリーフォームへ</a>
           </div>
         </div>
 
-        <div class="entry-card" data-animate="fade-up" data-delay="100">
+        <div class="entry-card entry-card--info">
           <div class="entry-card-header entry-card--career">
             <span class="entry-badge">通年募集</span>
-            <h3>中途・キャリア採用</h3>
+            <h3>中途・キャリア</h3>
           </div>
           <div class="entry-card-body">
-            <p>経験を活かしながら「あなたじゃないと」の専門家へ。<br>一緒に組織を成長させる仲間を求めています。</p>
+            <p>経験を活かしながら「あなたじゃないと」の専門家へ。一緒に組織を成長させる仲間を求めています。</p>
             <dl class="entry-meta">
-              <dt>対象</dt><dd>小売・アパレル・スポーツ業界経験者歓迎<br>未経験でも情熱があればOK</dd>
-              <dt>職種</dt><dd>店舗販売 / EC / バイヤー / VMD / メディア</dd>
+              <dt>対象</dt><dd>未経験でも情熱があればOK</dd>
+              <dt>職種</dt><dd>店舗販売 / EC / バイヤー / VMD</dd>
             </dl>
-            <a href="https://sportsmario.co.jp/recruit/entry/" class="btn btn-primary btn-block" target="_blank">中途エントリーフォームへ</a>
           </div>
         </div>
 
-        <div class="entry-card" data-animate="fade-up" data-delay="200">
+        <div class="entry-card entry-card--info">
           <div class="entry-card-header entry-card--ssma">
             <span class="entry-badge">NEW</span>
-            <h3>SMSA（インフルエンサー）採用</h3>
+            <h3>SMSA</h3>
           </div>
           <div class="entry-card-body">
-            <p>あなたの影響力に「専門性」と「安定収入」を掛け合わせませんか。<br>入社時点でSMSAランク認定。タレント手当を初月から支給。</p>
+            <p>あなたの影響力に「専門性」と「安定収入」を掛け合わせませんか。入社時点でSMSAランク認定。</p>
             <dl class="entry-meta">
-              <dt>対象</dt><dd>スポーツ・ファッション・ライフスタイル分野でSNS発信をしている方<br>（フォロワー1,000人以上目安）</dd>
-              <dt>特典</dt><dd>タレント手当 / 資格取得支援 / 商品企画参画</dd>
+              <dt>対象</dt><dd>SNS発信者（目安1,000フォロワー〜）</dd>
+              <dt>特典</dt><dd>タレント手当 / 商品企画参画</dd>
             </dl>
-            <a href="https://sportsmario.co.jp/recruit/entry/" class="btn btn-accent btn-block" target="_blank">SMSA採用 問い合わせ</a>
           </div>
         </div>
 
-        <div class="entry-card" data-animate="fade-up" data-delay="300">
+        <div class="entry-card entry-card--info">
           <div class="entry-card-header entry-card--part">
             <span class="entry-badge">各店舗</span>
             <h3>アルバイト・パート</h3>
           </div>
           <div class="entry-card-body">
             <p>シフト柔軟・スポーツ助成金あり・正社員登用制度あり。</p>
-            <a href="https://sportsmario.co.jp/recruit/entry/" class="btn btn-secondary btn-block" target="_blank">アルバイト応募フォームへ</a>
+            <dl class="entry-meta">
+              <dt>時給</dt><dd>1,200円〜（店舗による）</dd>
+              <dt>勤務</dt><dd>週2日〜、1日4時間〜応相談</dd>
+            </dl>
           </div>
         </div>
+      </div>
+
+      <!-- ============ 応募フォーム ============ -->
+      <div class="application-form-wrap" data-animate="fade-up">
+        <div class="application-form-header">
+          <h3>応募フォーム</h3>
+          <p>★ は必須項目です</p>
+        </div>
+
+        <form id="application-form" class="application-form" novalidate>
+          <!-- honeypot（ボット対策の隠しフィールド） -->
+          <div class="hp-field" aria-hidden="true">
+            <label>Website (leave blank)<input type="text" name="_honeypot" tabindex="-1" autocomplete="off"></label>
+          </div>
+
+          <!-- 応募区分 -->
+          <div class="form-group">
+            <label for="app-category">応募区分 <span class="req">★</span></label>
+            <select id="app-category" name="category" required>
+              <option value="">選択してください</option>
+              <option value="新卒採用">新卒採用（2027年3月卒業見込み）</option>
+              <option value="中途・キャリア採用">中途・キャリア採用</option>
+              <option value="SMSA採用">SMSA（インフルエンサー）採用</option>
+              <option value="アルバイト・パート">アルバイト・パート</option>
+            </select>
+          </div>
+
+          <!-- 店舗選択（店舗詳細ページから流入時に自動入力） -->
+          <div class="form-group">
+            <label for="app-shopId">希望店舗（任意）</label>
+            <select id="app-shopId" name="shopId">
+              <option value="">指定なし / 未定</option>
+              <option value="shimokitazawa">STAND ON 下北沢店</option>
+              <option value="shop-02">【店舗名2】</option>
+              <option value="shop-03">【店舗名3】</option>
+              <option value="shop-04">【店舗名4】</option>
+              <option value="shop-05">【店舗名5】</option>
+              <option value="shop-06">【店舗名6】</option>
+              <option value="shop-07">【店舗名7】</option>
+              <option value="shop-08">マリオセレクト / EC事業部</option>
+            </select>
+          </div>
+
+          <!-- 氏名 -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="app-name">お名前 <span class="req">★</span></label>
+              <input id="app-name" type="text" name="name" required placeholder="山田 太郎" autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="app-nameKana">ふりがな</label>
+              <input id="app-nameKana" type="text" name="nameKana" placeholder="やまだ たろう">
+            </div>
+          </div>
+
+          <!-- 連絡先 -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="app-email">メールアドレス <span class="req">★</span></label>
+              <input id="app-email" type="email" name="email" required placeholder="example@example.com" autocomplete="email">
+            </div>
+            <div class="form-group">
+              <label for="app-phone">電話番号 <span class="req">★</span></label>
+              <input id="app-phone" type="tel" name="phone" required placeholder="090-1234-5678" autocomplete="tel">
+            </div>
+          </div>
+
+          <!-- 年齢・性別・都道府県 -->
+          <div class="form-row form-row--3col">
+            <div class="form-group">
+              <label for="app-age">年齢</label>
+              <input id="app-age" type="number" name="age" min="15" max="99" placeholder="25">
+            </div>
+            <div class="form-group">
+              <label for="app-gender">性別</label>
+              <select id="app-gender" name="gender">
+                <option value="">選択しない</option>
+                <option value="男性">男性</option>
+                <option value="女性">女性</option>
+                <option value="その他">その他 / 無回答</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="app-prefecture">都道府県</label>
+              <input id="app-prefecture" type="text" name="prefecture" placeholder="東京都">
+            </div>
+          </div>
+
+          <!-- 現況 -->
+          <div class="form-group">
+            <label for="app-currentStatus">現在のご状況</label>
+            <select id="app-currentStatus" name="currentStatus">
+              <option value="">選択してください</option>
+              <option value="在職中">在職中</option>
+              <option value="離職中">離職中</option>
+              <option value="学生">学生</option>
+              <option value="その他">その他</option>
+            </select>
+          </div>
+
+          <!-- 新卒用フィールド -->
+          <div class="form-row" data-show-for="新卒採用">
+            <div class="form-group">
+              <label for="app-graduationYear">卒業予定年月 <span class="req">★</span></label>
+              <input id="app-graduationYear" type="text" name="graduationYear" placeholder="2027年3月" required>
+            </div>
+            <div class="form-group">
+              <label for="app-school">学校名 <span class="req">★</span></label>
+              <input id="app-school" type="text" name="school" placeholder="○○大学 ○○学部" required>
+            </div>
+          </div>
+
+          <!-- SMSA用フィールド -->
+          <div class="form-row" data-show-for="SMSA採用">
+            <div class="form-group">
+              <label for="app-snsUrl">SNS アカウントURL <span class="req">★</span></label>
+              <input id="app-snsUrl" type="url" name="snsUrl" placeholder="https://www.instagram.com/your_account" required>
+            </div>
+            <div class="form-group">
+              <label for="app-followers">主要SNSのフォロワー数 <span class="req">★</span></label>
+              <input id="app-followers" type="text" name="followers" placeholder="例: Instagram 5,000" required>
+            </div>
+          </div>
+
+          <!-- 志望動機 -->
+          <div class="form-group">
+            <label for="app-message">志望動機・自己PR</label>
+            <textarea id="app-message" name="message" rows="6" placeholder="スポーツマリオに興味を持った理由、これまでの経験、働き方のご希望などを自由にお書きください。"></textarea>
+          </div>
+
+          <!-- 流入元 -->
+          <div class="form-group">
+            <label for="app-source">当社を知ったきっかけ</label>
+            <select id="app-source" name="source">
+              <option value="">選択してください</option>
+              <option value="検索エンジン">検索エンジン（Google等）</option>
+              <option value="SNS">SNS（Instagram / X / TikTok等）</option>
+              <option value="知人紹介">知人・社員の紹介</option>
+              <option value="店舗">店舗で知った</option>
+              <option value="求人サイト">求人サイト</option>
+              <option value="その他">その他</option>
+            </select>
+          </div>
+
+          <!-- 個人情報同意 -->
+          <div class="form-group form-group--consent">
+            <label class="consent-label">
+              <input type="checkbox" name="consent" required>
+              <span>個人情報の取り扱いに同意します <span class="req">★</span></span>
+            </label>
+            <p class="form-note">ご入力いただいた情報は、採用選考の目的のみに使用し、第三者への提供はいたしません。</p>
+          </div>
+
+          <!-- ステータス表示 -->
+          <div id="app-status" class="form-status" style="display:none;"></div>
+
+          <!-- 送信ボタン -->
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-large">応募を送信する</button>
+          </div>
+        </form>
       </div>
     </div>
   </section>
@@ -1136,5 +1300,7 @@
   </footer>
 
   <script src="script.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/application-form.js"></script>
 </body>
 </html>

@@ -4,8 +4,9 @@
   "description": "スポーツマリオ 採用サイト",
   "private": true,
   "scripts": {
-    "build": "node scripts/build-shops.js",
+    "build": "node scripts/build-shops.js && node scripts/inject-shop-options.js",
     "build:shops": "node scripts/build-shops.js",
+    "build:form": "node scripts/inject-shop-options.js",
     "dev": "http-server -p 8080 -c-1",
     "start": "http-server -p 8080 -c-1"
   },

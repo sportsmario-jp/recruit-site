@@ -3,7 +3,7 @@
 
 [build]
   # ビルドコマンド: shops.json から店舗ページを生成
-  command = "node scripts/build-shops.js"
+  command = "node scripts/build-shops.js && node scripts/inject-shop-options.js"
   # 公開ディレクトリ（ルート）
   publish = "."
 
