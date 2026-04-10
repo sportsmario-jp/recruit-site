@@ -109,13 +109,17 @@ function renderFooter() {
 
 // ---------- ジョブHTML生成 ----------
 
-function renderJob(job) {
+function renderJob(job, shopId) {
   const benefits = job.benefits.map((b) => `<li>${escapeHtml(b)}</li>`).join('\n');
   const requirements = job.requirements
     ? `<dt>応募資格</dt><dd><ul class="job-list">${job.requirements
         .map((r) => `<li>${escapeHtml(r)}</li>`)
         .join('')}</ul></dd>`
     : '';
+  // 職種→応募区分マッピング
+  const categoryMap = { fulltime: '中途・キャリア採用', parttime: 'アルバイト・パート', contract: '中途・キャリア採用' };
+  const category = encodeURIComponent(categoryMap[job.type] || '');
+  const entryUrl = `../index.html?shop=${escapeHtml(shopId)}&category=${category}#entry`;
   return `
     <div class="job-card job-card--${escapeHtml(job.type)}">
       <div class="job-card__header">
@@ -128,7 +132,7 @@ function renderJob(job) {
         <dt>待遇・福利厚生</dt><dd><ul class="job-list">${benefits}</ul></dd>
         ${requirements}
       </dl>
-      <a href="#entry" class="job-entry-btn">この職種に応募する</a>
+      <a href="${entryUrl}" class="job-entry-btn">この職種に応募する →</a>
     </div>`;
 }
 
@@ -136,7 +140,7 @@ function renderJob(job) {
 
 function renderShopPage(shop, brands) {
   const brand = brands[shop.brand] || { label: shop.brandLabel, color: '#00c853' };
-  const jobsHtml = shop.jobs.map(renderJob).join('\n');
+  const jobsHtml = shop.jobs.map(job => renderJob(job, shop.id)).join('\n');
   const appealHtml = shop.appeal
     .map((a) => `<li>${escapeHtml(a)}</li>`)
     .join('\n');
@@ -198,13 +202,6 @@ ${renderHeader('detail')}
       </div>
     </section>
 
-    <section class="shop-entry" id="entry">
-      <div class="shop-entry__inner">
-        <h2>この店舗に応募する</h2>
-        <p>下記フォームよりお気軽にご応募ください。担当者より2営業日以内にご連絡します。</p>
-        <a href="../index.html?shop=${escapeHtml(shop.id)}#entry" class="btn-primary btn-large">応募フォームへ</a>
-      </div>
-    </section>
   </main>
 
 ${renderFooter()}
