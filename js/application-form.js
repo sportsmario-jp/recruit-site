@@ -51,12 +51,15 @@
     categorySelect.addEventListener('change', updateConditionalFields);
   }
 
-  // 応募区分カードクリック → 区分を自動選択 + フォームへスクロール
+  // 応募区分カードクリック → 区分を自動選択 + 店舗リセット + フォームへスクロール
   document.querySelectorAll('[data-category-select]').forEach((card) => {
     card.addEventListener('click', function () {
       const category = this.getAttribute('data-category-select');
       if (!category || !categorySelect) return;
       categorySelect.value = category;
+      // カードクリック = TOPページからの応募なので店舗選択をリセット
+      const shopInput = document.getElementById('app-shopId');
+      if (shopInput) shopInput.value = '';
       updateConditionalFields();
       // フォーム先頭までスムーズスクロール
       const target = document.querySelector('.application-form-wrap') || form;
