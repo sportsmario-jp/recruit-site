@@ -271,9 +271,14 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 }
 .hero-ctas {
   display: flex;
-  gap: 16px;
+  gap: 12px;
   justify-content: center;
   flex-wrap: wrap;
+}
+.hero-ctas .btn {
+  min-width: auto !important;
+  padding: 12px 24px;
+  font-size: 0.82rem;
 }
 .hero-scroll {
   position: absolute;
