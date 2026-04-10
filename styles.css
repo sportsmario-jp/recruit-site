@@ -111,11 +111,11 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .nav-list {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 10px;
 }
 .nav-list a {
   font-family: var(--font-en);
-  font-size: 0.72rem;
+  font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   white-space: nowrap;
@@ -129,10 +129,10 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 }
 .nav-sub {
   font-family: var(--font-jp);
-  font-size: 0.55rem;
+  font-size: 0.5rem;
   font-weight: 400;
-  letter-spacing: 0.02em;
-  color: #888;
+  letter-spacing: 0;
+  color: #999;
   margin-top: 1px;
 }
 .nav-list a::after {
@@ -153,6 +153,12 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 }
 .nav-cta::after { display: none !important; }
 .nav-cta:hover { background: var(--color-accent-dark) !important; }
+.nav-cta--grad {
+  background: #1565c0 !important;
+}
+.nav-cta--grad:hover {
+  background: #1976d2 !important;
+}
 
 /* Hamburger */
 .hamburger { display: none; width: 32px; height: 24px; position: relative; }
@@ -182,6 +188,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   .global-nav.open { visibility: visible; pointer-events: auto; transform: translateY(0); }
   .nav-list { flex-direction: column; gap: 28px; }
   .nav-list a { font-size: 1.1rem; color: var(--color-primary); font-weight: 600; }
+  .nav-sub { font-size: 0.7rem; color: #888; margin-top: 4px; }
 }
 
 /* ========================================

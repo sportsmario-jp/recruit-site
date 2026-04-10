@@ -92,6 +92,32 @@
     console.warn('URL パラメータの解析に失敗:', e);
   }
 
+  // WEB説明会の水曜日日程を自動生成（今日から8週分）
+  const seminarSelect = document.getElementById('app-seminarDate');
+  if (seminarSelect) {
+    const today = new Date();
+    for (let i = 0; i < 8; i++) {
+      const d = new Date(today);
+      // 次の水曜日を計算（0=日,3=水）
+      const daysUntilWed = (3 - d.getDay() + 7) % 7 || (i === 0 ? 0 : 7);
+      d.setDate(d.getDate() + daysUntilWed + (i > 0 ? (i - (daysUntilWed === 0 ? 0 : 1)) * 7 : 0));
+      // もっとシンプルに: i週後の水曜日
+      const wed = new Date(today);
+      wed.setDate(today.getDate() + ((3 - today.getDay() + 7) % 7) + i * 7);
+      if (wed <= today) { wed.setDate(wed.getDate() + 7); }
+      // 8月末（2026-08-31）を超えたら終了
+      if (wed > new Date('2026-08-31')) break;
+      const m = wed.getMonth() + 1;
+      const dd = wed.getDate();
+      const label = `${m}月${dd}日（水）15:00〜`;
+      const value = `${wed.getFullYear()}-${String(m).padStart(2,'0')}-${String(dd).padStart(2,'0')}`;
+      const opt = document.createElement('option');
+      opt.value = value;
+      opt.textContent = label;
+      seminarSelect.appendChild(opt);
+    }
+  }
+
   // ステータス表示
   function showStatus(type, message) {
     if (!statusBox) return;

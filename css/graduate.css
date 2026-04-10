@@ -138,6 +138,77 @@
   margin: 0;
 }
 
+/* ---------- WEB説明会 ---------- */
+.grad-seminar {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.grad-seminar__card {
+  background: #fff;
+  border: 2px solid #1565c0;
+  border-radius: 12px;
+  padding: 36px 28px;
+  text-align: center;
+}
+
+.grad-seminar__icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.grad-seminar__card h3 {
+  font-size: 1.3rem;
+  color: #1565c0;
+  margin: 0 0 16px;
+}
+
+.grad-seminar__card p {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.grad-seminar__info h3 {
+  font-size: 1.1rem;
+  margin: 0 0 16px;
+}
+
+.grad-seminar__steps {
+  padding: 0 0 0 24px;
+  margin: 0 0 28px;
+  line-height: 2;
+  color: #444;
+}
+
+.grad-seminar__steps li {
+  margin-bottom: 4px;
+}
+
+.grad-seminar__cta {
+  display: inline-block;
+  background: #1565c0;
+  color: #fff;
+  font-weight: 700;
+  padding: 14px 36px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.grad-seminar__cta:hover {
+  background: #1976d2;
+}
+
+@media (max-width: 768px) {
+  .grad-seminar {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---------- 選考フロー ---------- */
 .grad-flow {
   display: flex;
