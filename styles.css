@@ -1460,31 +1460,38 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 /* 会社概要レイアウト（テーブル＋チャート横並び） */
 .company-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.1fr;
   gap: 48px;
   align-items: start;
 }
 @media (max-width: 960px) {
   .company-layout { grid-template-columns: 1fr; }
 }
+.company-chart {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 28px 24px 20px;
+}
 .company-chart__title {
-  font-size: 1rem;
-  font-weight: 700;
-  margin: 0 0 16px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin: 0 0 20px;
   text-align: center;
+  color: #333;
 }
 .company-chart__title small {
   font-weight: 400;
   color: #888;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
+  margin-left: 4px;
 }
 .company-chart__bars {
   display: flex;
   align-items: flex-end;
-  gap: 4px;
-  height: 220px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid #ddd;
+  gap: 3px;
+  height: 240px;
+  padding: 0 4px 0;
+  border-bottom: 2px solid #ccc;
 }
 .cc-bar {
   flex: 1;
@@ -1493,39 +1500,57 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   align-items: center;
   justify-content: flex-end;
   height: 100%;
+  position: relative;
 }
 .cc-bar::before {
   content: '';
-  width: 100%;
-  max-width: 28px;
+  width: 85%;
   height: var(--h, 50%);
-  background: #3b7dd8;
+  background: linear-gradient(180deg, #4a90d9 0%, #2d6cb8 100%);
   border-radius: 3px 3px 0 0;
-  transition: height 0.6s ease;
+  min-height: 4px;
 }
 .cc-bar--covid::before {
-  background: #b0bec5;
+  background: linear-gradient(180deg, #b0bec5 0%, #90a4ae 100%);
 }
 .cc-bar--latest::before {
-  background: var(--color-accent);
+  background: linear-gradient(180deg, #66bb6a 0%, #43a047 100%);
 }
 .cc-val {
-  font-size: 0.55rem;
+  font-size: 0.6rem;
   font-weight: 700;
-  color: #333;
-  margin-bottom: 2px;
+  color: #2d6cb8;
+  margin-bottom: 3px;
   white-space: nowrap;
 }
+.cc-bar--latest .cc-val {
+  color: #2e7d32;
+}
 .cc-year {
-  font-size: 0.5rem;
-  color: #888;
-  margin-top: 4px;
+  font-size: 0.55rem;
+  color: #666;
+  margin-top: 6px;
+  font-weight: 500;
+}
+.company-chart__covid-label {
+  font-size: 0.6rem;
+  color: #90a4ae;
+  text-align: center;
+  margin: 6px 0 0;
+  /* 20/6〜22/6の位置に合わせる */
+  padding-left: 40%;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  border-top: 1px dashed #b0bec5;
+  padding-top: 4px;
 }
 .company-chart__note {
   font-size: 0.72rem;
   color: #888;
   text-align: center;
-  margin: 12px 0 0;
+  margin: 10px 0 0;
+  line-height: 1.6;
 }
 
 /* ========================================
