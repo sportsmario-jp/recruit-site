@@ -32,6 +32,12 @@
         }
       });
     });
+    // 正社員系カテゴリの場合、店舗欄に注釈を表示
+    const shopNote = document.querySelector('.shop-note-fulltime');
+    if (shopNote) {
+      const isFulltime = ['新卒採用', '中途・キャリア採用'].includes(category);
+      shopNote.style.display = isFulltime ? '' : 'none';
+    }
   }
 
   if (categorySelect) {
