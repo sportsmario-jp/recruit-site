@@ -120,8 +120,13 @@ function renderJob(job, shopId) {
   const categoryMap = { fulltime: '中途・キャリア採用', parttime: 'アルバイト・パート', contract: '中途・キャリア採用' };
   const category = encodeURIComponent(categoryMap[job.type] || '');
   const entryUrl = `../index.html?shop=${escapeHtml(shopId)}&category=${category}#application-form-wrap`;
+  // recruiting: false の場合は募集停止表示
+  const isRecruiting = job.recruiting !== false;
+  const entryButton = isRecruiting
+    ? `<a href="${entryUrl}" class="job-entry-btn">この職種に応募する →</a>`
+    : `<span class="job-entry-btn job-entry-btn--closed">現在この職種は募集しておりません</span>`;
   return `
-    <div class="job-card job-card--${escapeHtml(job.type)}">
+    <div class="job-card job-card--${escapeHtml(job.type)}${isRecruiting ? '' : ' job-card--closed'}">
       <div class="job-card__header">
         <span class="job-type-badge">${escapeHtml(formatJobType(job.type))}</span>
         <h3 class="job-position">${escapeHtml(job.position)}</h3>
@@ -132,7 +137,7 @@ function renderJob(job, shopId) {
         <dt>待遇・福利厚生</dt><dd><ul class="job-list">${benefits}</ul></dd>
         ${requirements}
       </dl>
-      <a href="${entryUrl}" class="job-entry-btn">この職種に応募する →</a>
+      ${entryButton}
     </div>`;
 }
 

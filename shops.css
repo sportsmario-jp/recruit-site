@@ -394,6 +394,22 @@
   background: #00a844;
 }
 
+/* 募集停止 */
+.job-card--closed {
+  opacity: 0.6;
+}
+
+.job-entry-btn--closed {
+  display: inline-block;
+  background: #999;
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 30px;
+  font-weight: 700;
+  cursor: not-allowed;
+  font-size: 0.9rem;
+}
+
 /* ---------- 応募CTAセクション ---------- */
 .shop-entry {
   padding: 80px 24px;
