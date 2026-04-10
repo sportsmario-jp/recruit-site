@@ -348,6 +348,11 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   color: #fff;
 }
 .btn-accent:hover { background: #e56200; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,109,0,0.3); }
+.btn-teal {
+  background: #00897b;
+  color: #fff;
+}
+.btn-teal:hover { background: #00796b; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,137,123,0.3); }
 .btn-large { padding: 18px 40px; font-size: 1rem; }
 .btn-block { display: flex; width: 100%; }
 
@@ -1364,7 +1369,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .entry-card--new { background: linear-gradient(135deg, #1565c0, #0d47a1); }
 .entry-card--career { background: linear-gradient(135deg, #00a844, #007c33); }
 .entry-card--ssma { background: linear-gradient(135deg, #e65100, #bf360c); }
-.entry-card--part { background: linear-gradient(135deg, #555, #333); }
+.entry-card--part { background: linear-gradient(135deg, #00897b, #00695c); }
 .entry-badge {
   font-family: var(--font-en);
   font-size: 0.7rem;
