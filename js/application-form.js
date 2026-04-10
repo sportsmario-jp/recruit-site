@@ -63,19 +63,21 @@
 
   // URL パラメータから店舗ID / カテゴリを初期セット
   try {
+    // ?shop=xxx#entry 形式（推奨）と #entry?shop=xxx 形式（後方互換）の両方に対応
+    let query = new URLSearchParams(window.location.search);
     const hash = window.location.hash;
-    if (hash.includes('?')) {
-      const query = new URLSearchParams(hash.split('?')[1]);
-      const shopId = query.get('shop');
-      const category = query.get('category');
-      if (shopId) {
-        const shopInput = document.getElementById('app-shopId');
-        if (shopInput) shopInput.value = shopId;
-      }
-      if (category && categorySelect) {
-        categorySelect.value = category;
-        updateConditionalFields();
-      }
+    if (!query.has('shop') && !query.has('category') && hash.includes('?')) {
+      query = new URLSearchParams(hash.split('?')[1]);
+    }
+    const shopId = query.get('shop');
+    const category = query.get('category');
+    if (shopId) {
+      const shopInput = document.getElementById('app-shopId');
+      if (shopInput) shopInput.value = shopId;
+    }
+    if (category && categorySelect) {
+      categorySelect.value = category;
+      updateConditionalFields();
     }
   } catch (e) {
     console.warn('URL パラメータの解析に失敗:', e);
