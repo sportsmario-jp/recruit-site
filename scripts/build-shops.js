@@ -119,7 +119,7 @@ function renderJob(job, shopId) {
   // 職種→応募区分マッピング
   const categoryMap = { fulltime: '中途・キャリア採用', parttime: 'アルバイト・パート', contract: '中途・キャリア採用' };
   const category = encodeURIComponent(categoryMap[job.type] || '');
-  const entryUrl = `../index.html?shop=${escapeHtml(shopId)}&category=${category}#entry`;
+  const entryUrl = `../index.html?shop=${escapeHtml(shopId)}&category=${category}#application-form-wrap`;
   return `
     <div class="job-card job-card--${escapeHtml(job.type)}">
       <div class="job-card__header">
