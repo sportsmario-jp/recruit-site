@@ -1,0 +1,101 @@
+/* 会社概要レイアウト（テーブル＋チャート横並び） */
+.company-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 48px;
+  align-items: start;
+}
+@media (max-width: 960px) {
+  .company-layout { grid-template-columns: 1fr; }
+}
+.company-chart {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 28px 24px 20px;
+}
+.company-chart__title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin: 0 0 20px;
+  text-align: center;
+  color: #333;
+}
+.company-chart__title small {
+  font-weight: 400;
+  color: #888;
+  font-size: 0.75rem;
+  margin-left: 4px;
+}
+.company-chart__bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 280px;
+  padding: 0 4px 24px;
+  border-bottom: 2px solid #ccc;
+  position: relative;
+}
+.cc-bar {
+  flex: 1;
+  height: 100%;
+  position: relative;
+}
+.cc-bar::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 7.5%;
+  width: 85%;
+  height: var(--h, 50%);
+  background: linear-gradient(180deg, #4a90d9 0%, #2d6cb8 100%);
+  border-radius: 3px 3px 0 0;
+  min-height: 4px;
+}
+.cc-bar--covid::before {
+  background: linear-gradient(180deg, #b0bec5 0%, #90a4ae 100%);
+}
+.cc-bar--latest::before {
+  background: linear-gradient(180deg, #66bb6a 0%, #43a047 100%);
+}
+.cc-val {
+  position: absolute;
+  bottom: calc(var(--h, 50%) + 3px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #2d6cb8;
+  white-space: nowrap;
+  z-index: 1;
+}
+.cc-bar--latest .cc-val {
+  color: #2e7d32;
+}
+.cc-year {
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.55rem;
+  color: #666;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.company-chart__covid-label {
+  font-size: 0.6rem;
+  color: #90a4ae;
+  text-align: center;
+  margin: 8px 0 0;
+  margin-left: calc(7 / 14 * 100%);
+  width: calc(3 / 14 * 100%);
+  border-top: 1px dashed #b0bec5;
+  padding-top: 4px;
+  white-space: nowrap;
+}
+.company-chart__note {
+  font-size: 0.72rem;
+  color: #888;
+  text-align: center;
+  margin: 10px 0 0;
+  line-height: 1.6;
+}
