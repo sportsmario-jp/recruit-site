@@ -1295,6 +1295,12 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   line-height: 1.5;
 }
 .placeholder-portrait { aspect-ratio: 3/4; }
+.work-detail-photo {
+  width: 100%;
+  border-radius: 16px;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
 
 @media (max-width: 768px) {
   .work-detail { grid-template-columns: 1fr; gap: 24px; }
