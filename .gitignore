@@ -36,3 +36,8 @@ npm-debug.log*
 screenshots/
 # xlsx はバイナリで差分が取れないため除外（必要ならGoogleドライブ等で共有）
 素材撮影依頼書.xlsx
+
+# カメラ撮って出しの原版（圧縮済みファイルのみコミット対象）
+images/DSC_*.JPG
+images/DSC_*.jpg
+images/_raw/
