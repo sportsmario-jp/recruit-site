@@ -41,3 +41,6 @@ screenshots/
 images/DSC_*.JPG
 images/DSC_*.jpg
 images/_raw/
+
+# Claude Code の個人用権限設定（マシンごとに異なるためコミットしない）
+.claude/settings.local.json
