@@ -767,6 +767,13 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   border-radius: 16px 16px 0 0;
   overflow: hidden;
 }
+.pillar-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-bottom: 2px solid rgba(127,204,48,0.3);
+}
 .pillar-photo-placeholder {
   width: 100%;
   aspect-ratio: 4 / 3;
