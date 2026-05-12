@@ -44,6 +44,8 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
 .sp-only { display: none; }
 @media (max-width: 768px) { .sp-only { display: inline; } }
+.pc-only { display: inline; }
+@media (max-width: 768px) { .pc-only { display: none; } }
 
 /* ── ANIMATIONS ── */
 [data-animate] {
@@ -393,6 +395,38 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 }
 .section-header--light .section-title { color: #fff; }
 .section-header--light .section-en { color: var(--color-accent); }
+
+/* VISION セクション専用ヘッダー（中期経営計画ラベル + プラン名を強調） */
+.section-header--vision .vision-plan-label {
+  font-family: var(--font-jp, 'Noto Sans JP', sans-serif);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.55);
+  margin: 0 0 10px;
+}
+.section-header--vision .vision-plan-name {
+  font-family: var(--font-en);
+  font-size: clamp(1.6rem, 3.8vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+  margin: 0 0 20px;
+  line-height: 1.1;
+}
+.section-header--vision .vision-plan-name::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 3px;
+  background: var(--color-accent);
+  margin: 16px auto 0;
+  border-radius: 2px;
+}
+.section-header--vision .section-title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  margin-top: 8px;
+}
 
 /* ========================================
    NUMBERS
@@ -870,10 +904,21 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .rank-tier--advance { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); }
 .rank-tier--basic { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
 .rank-info strong {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
   font-family: var(--font-en);
   font-size: 1rem;
   font-weight: 800;
   letter-spacing: 0.05em;
+}
+.rank-jp {
+  font-family: var(--font-jp, 'Noto Sans JP', sans-serif);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(255,255,255,0.7);
 }
 .rank-req {
   display: block;
@@ -882,11 +927,23 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   margin-top: 2px;
 }
 .rank-amount {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   font-family: var(--font-en);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--color-accent);
   white-space: nowrap;
+  line-height: 1.3;
+}
+.rank-note {
+  font-family: var(--font-jp, 'Noto Sans JP', sans-serif);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0;
+  margin-top: 2px;
 }
 
 /* Influencer CTA */
