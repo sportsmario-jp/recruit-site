@@ -137,6 +137,44 @@
 .iv-photo-insert .placeholder-image {
   background: linear-gradient(135deg, #e0e0e0, #f5f5f5);
 }
+/* 「最近の話」近況ブロック（手紙の追伸感を演出） */
+.iv-ps {
+  display: flex !important;
+  align-items: center;
+  gap: 24px;
+  max-width: 580px;
+  margin: 56px auto;
+  padding: 18px 22px;
+  background: #fafafa;
+  border-left: 3px solid var(--color-accent, #00c853);
+  border-radius: 6px;
+}
+.iv-ps__img {
+  flex: 0 0 140px !important;
+  width: 140px !important;
+  height: 140px !important;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.iv-ps__body { flex: 1; min-width: 0; }
+.iv-ps__label {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-accent, #00c853);
+  margin-bottom: 4px;
+}
+.iv-ps__text {
+  font-size: 0.95rem;
+  color: var(--color-text, #333);
+  margin: 0;
+  line-height: 1.6;
+}
+@media (max-width: 480px) {
+  .iv-ps { gap: 16px; padding: 14px 18px; }
+  .iv-ps__img { flex-basis: 100px !important; width: 100px !important; height: 100px !important; }
+}
 .iv-photo-caption {
   font-size: 0.75rem;
   color: var(--color-text-muted);

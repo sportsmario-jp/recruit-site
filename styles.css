@@ -1340,6 +1340,13 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 }
 .people-card--reverse { direction: rtl; }
 .people-card--reverse > * { direction: ltr; }
+.people-photo-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 16px;
+}
 .people-tag {
   font-size: 0.8rem;
   font-weight: 600;
@@ -1369,6 +1376,28 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 
 @media (max-width: 768px) {
   .people-card, .people-card--reverse { grid-template-columns: 1fr; direction: ltr; gap: 24px; }
+}
+
+/* ========================================
+   PHILOSOPHY / 理念・ミッション（フッター上）
+   ======================================== */
+.philosophy {
+  padding: 40px 0 80px;
+  background: #fff;
+}
+.philosophy-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+.philosophy-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
 }
 
 /* ========================================
