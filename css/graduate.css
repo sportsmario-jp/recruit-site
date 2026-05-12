@@ -109,6 +109,19 @@
   line-height: 1.8;
 }
 
+.grad-section__note {
+  text-align: center;
+  color: #777;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  margin: 16px 0 0;
+}
+.grad-table small {
+  font-size: 0.75rem;
+  color: #888;
+  font-weight: 400;
+}
+
 /* ---------- スケジュール ---------- */
 .grad-schedule {
   display: grid;
