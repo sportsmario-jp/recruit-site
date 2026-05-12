@@ -101,9 +101,19 @@ function renderHeader(currentPage) {
 
 function renderFooter() {
   return `  <footer class="site-footer">
-    <div class="footer-inner">
-      <img src="../images/logo-footer.svg" alt="スポーツマリオ" class="footer-logo">
-      <p>&copy; Sports Mario Co., Ltd.</p>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <img src="../images/logo-footer.svg" alt="SPORTS MARIO" class="footer-logo-img">
+        </div>
+        <nav class="footer-nav">
+          <a href="https://sportsmario.co.jp/" target="_blank" rel="noopener">コーポレートサイト</a>
+          <a href="https://www.sportsmario.net/" target="_blank" rel="noopener">公式通販サイト</a>
+          <a href="https://www.instagram.com/sportsmario_official/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.sportsmario.net/p/about/privacy-policy" target="_blank" rel="noopener">プライバシーポリシー</a>
+        </nav>
+        <p class="footer-copy">&copy; 2026 Sports Mario Inc. All Rights Reserved.</p>
+      </div>
     </div>
   </footer>`;
 }
