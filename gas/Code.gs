@@ -45,10 +45,11 @@ const CONFIG = {
   // 送信元メールアドレス（FROM）
   // GAS実行者アカウント(yusuke.kirihara@sports-mario.jp)の Gmail で
   // 「設定 > アカウントとインポート > 名前: 他のメールアドレスを追加」から
-  // mario@sportsmario.co.jp を Send-as エイリアス登録した上で利用する。
+  // corporate.division@sports-mario.jp を Send-as エイリアス登録した上で利用する。
+  // 同一ドメインなのでSMTP情報入力は不要、確認メールのリンククリックで完了。
   // 未登録の状態でこの値を指定するとメール送信時にエラーになるため、
   // 登録完了までは空文字にしておくと実行者アドレスがそのまま使われる。
-  FROM_EMAIL: 'mario@sportsmario.co.jp',
+  FROM_EMAIL: 'corporate.division@sports-mario.jp',
 };
 
 // ========= エントリーポイント =========
@@ -313,7 +314,7 @@ function initSettingsSheet(ss) {
   // 既存データを確認
   if (sheet.getLastRow() === 0) {
     sheet.getRange('A1').setValue('通知先メール').setFontWeight('bold').setBackground('#7FCC30');
-    sheet.getRange('A2').setValue('mario@sportsmario.co.jp');
+    sheet.getRange('A2').setValue('corporate.division@sports-mario.jp');
     sheet.getRange('C1').setValue('使い方');
     sheet
       .getRange('C2')

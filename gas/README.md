@@ -81,7 +81,7 @@
    - 権限一覧が表示される → **「許可」** をクリック
 4. 実行ログに **`✅ シート初期化完了`** と出れば成功
 5. スプレッドシートに戻ると、**「応募データ」** と **「設定」** の2つのシートが作成されているはず
-6. **「設定」シートのA2に `mario@sportsmario.co.jp` が初期値として入っている**ことを確認
+6. **「設定」シートのA2に `corporate.division@sports-mario.jp` が初期値として入っている**ことを確認
 
 ---
 
@@ -159,7 +159,7 @@ git push
 
 | A列（通知先メール） |
 |---|
-| mario@sportsmario.co.jp |
+| corporate.division@sports-mario.jp |
 | yusuke.kirihara@sports-mario.jp ← 追加 |
 | another-staff@sports-mario.jp ← 追加 |
 
@@ -172,8 +172,9 @@ git push
 応募者への自動返信メールと、担当者への通知メールの **FROM** は、デフォルトでは
 GAS実行者の Google アカウント（`yusuke.kirihara@sports-mario.jp`）になります。
 
-`mario@sportsmario.co.jp` を FROM にするには、**事前に Gmail のエイリアス登録が必須** です。
+`corporate.division@sports-mario.jp` を FROM にするには、**事前に Gmail のエイリアス登録が必須** です。
 登録なしで `CONFIG.FROM_EMAIL` を指定すると送信時にエラーになります。
+※ 同一ドメイン（sports-mario.jp）同士なのでSMTP情報入力は不要。
 
 ### 手順
 
@@ -182,16 +183,16 @@ GAS実行者の Google アカウント（`yusuke.kirihara@sports-mario.jp`）に
 3. **「アカウントとインポート」** タブ
 4. **「他のメールアドレスを追加」** → ポップアップで以下を入力
    - 名前: `スポーツマリオ採用担当`
-   - メールアドレス: `mario@sportsmario.co.jp`
+   - メールアドレス: `corporate.division@sports-mario.jp`
    - **「エイリアスとして扱います」** にチェック
-5. 「次のステップ」 → 確認メールが `mario@sportsmario.co.jp` に届く
-6. メール内のリンクをクリックして承認
+5. 「次のステップ」 → 確認メールが `corporate.division@sports-mario.jp` に届く
+6. メール内のリンクをクリック（または確認コードを入力）して承認
 7. Gmail 設定画面に戻り、エイリアスが追加されたことを確認
 
 ### 動作確認
 
 エイリアス登録後、GAS エディタで `notifyStaff` または `sendAutoReply` をテスト実行し、
-受信メールの From が `スポーツマリオ採用担当 <mario@sportsmario.co.jp>` になっていれば OK。
+受信メールの From が `スポーツマリオ採用担当 <corporate.division@sports-mario.jp>` になっていれば OK。
 
 ### エイリアスを使いたくない場合
 
