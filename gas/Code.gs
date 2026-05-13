@@ -298,7 +298,7 @@ function initSettingsSheet(ss) {
   // 既存データを確認
   if (sheet.getLastRow() === 0) {
     sheet.getRange('A1').setValue('通知先メール').setFontWeight('bold').setBackground('#7FCC30');
-    sheet.getRange('A2').setValue('yusuke.kirihara@sports-mario.jp');
+    sheet.getRange('A2').setValue('mario@sportsmario.co.jp');
     sheet.getRange('C1').setValue('使い方');
     sheet
       .getRange('C2')

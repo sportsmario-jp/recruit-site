@@ -81,7 +81,7 @@
    - 権限一覧が表示される → **「許可」** をクリック
 4. 実行ログに **`✅ シート初期化完了`** と出れば成功
 5. スプレッドシートに戻ると、**「応募データ」** と **「設定」** の2つのシートが作成されているはず
-6. **「設定」シートのA2に `yusuke.kirihara@sports-mario.jp` が初期値として入っている**ことを確認
+6. **「設定」シートのA2に `mario@sportsmario.co.jp` が初期値として入っている**ことを確認
 
 ---
 
@@ -159,8 +159,8 @@ git push
 
 | A列（通知先メール） |
 |---|
-| yusuke.kirihara@sports-mario.jp |
-| corporate.division@sports-mario.jp ← 追加 |
+| mario@sportsmario.co.jp |
+| yusuke.kirihara@sports-mario.jp ← 追加 |
 | another-staff@sports-mario.jp ← 追加 |
 
 次の応募からすぐに全員に通知されます。

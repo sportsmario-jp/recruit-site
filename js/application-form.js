@@ -142,6 +142,14 @@
     e.preventDefault();
     clearStatus();
 
+    // 個人情報同意チェック（novalidate のため明示的に検証）
+    const consentInput = form.querySelector('input[name="consent"]');
+    if (consentInput && !consentInput.checked) {
+      showStatus('error', '「個人情報の取り扱いに同意します」にチェックを入れてください。');
+      consentInput.focus();
+      return;
+    }
+
     // honeypot フィールドチェック（ボット対策）
     const honeypot = form.querySelector('input[name="_honeypot"]');
     if (honeypot && honeypot.value) {
