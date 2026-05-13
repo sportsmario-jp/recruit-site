@@ -41,6 +41,14 @@ const CONFIG = {
 
   // 送信元メール表示名
   SENDER_NAME: 'スポーツマリオ採用担当',
+
+  // 送信元メールアドレス（FROM）
+  // GAS実行者アカウント(yusuke.kirihara@sports-mario.jp)の Gmail で
+  // 「設定 > アカウントとインポート > 名前: 他のメールアドレスを追加」から
+  // mario@sportsmario.co.jp を Send-as エイリアス登録した上で利用する。
+  // 未登録の状態でこの値を指定するとメール送信時にエラーになるため、
+  // 登録完了までは空文字にしておくと実行者アドレスがそのまま使われる。
+  FROM_EMAIL: 'mario@sportsmario.co.jp',
 };
 
 // ========= エントリーポイント =========
@@ -190,10 +198,12 @@ function notifyStaff(payload, rowNumber) {
     .filter((line) => line !== null && line !== undefined)
     .join('\n');
 
-  GmailApp.sendEmail(recipients.join(','), subject, body, {
+  const staffOptions = {
     name: CONFIG.SENDER_NAME,
     replyTo: payload.email,
-  });
+  };
+  if (CONFIG.FROM_EMAIL) staffOptions.from = CONFIG.FROM_EMAIL;
+  GmailApp.sendEmail(recipients.join(','), subject, body, staffOptions);
 }
 
 /**
@@ -229,9 +239,14 @@ function sendAutoReply(payload) {
     '━━━━━━━━━━━━━━━━━━',
   ].join('\n');
 
-  GmailApp.sendEmail(payload.email, subject, body, {
+  const replyOptions = {
     name: CONFIG.SENDER_NAME,
-  });
+  };
+  if (CONFIG.FROM_EMAIL) {
+    replyOptions.from = CONFIG.FROM_EMAIL;
+    replyOptions.replyTo = CONFIG.FROM_EMAIL;
+  }
+  GmailApp.sendEmail(payload.email, subject, body, replyOptions);
 }
 
 // ========= 初期化処理 =========
