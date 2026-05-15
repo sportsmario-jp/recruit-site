@@ -73,8 +73,8 @@
           "position": "アルバイト・パート",
           "salary": {
             "type": "hourly",
-            "min": 1230,
-            "note": "昇給あり"
+            "min": 1250,
+            "max": 1300
           },
           "hours": "週3日〜、1日5時間〜応相談",
           "benefits": [
@@ -646,8 +646,8 @@
           "position": "アルバイト・パート",
           "salary": {
             "type": "hourly",
-            "min": 1200,
-            "note": "昇給あり"
+            "min": 1170,
+            "max": 1250
           },
           "hours": "週2日〜、1日4時間〜応相談",
           "benefits": [
