@@ -147,7 +147,7 @@
         }
       ],
       "images": {
-        "hero": "images/shops/placeholder.jpg",
+        "hero": "images/shops/shonan-gate.jpg",
         "gallery": []
       }
     },
@@ -209,7 +209,7 @@
         }
       ],
       "images": {
-        "hero": "images/shops/placeholder.jpg",
+        "hero": "images/shops/ariake.jpg",
         "gallery": []
       }
     },
@@ -334,7 +334,7 @@
         }
       ],
       "images": {
-        "hero": "images/shops/placeholder.jpg",
+        "hero": "images/shops/kameari.jpg",
         "gallery": []
       }
     },
@@ -396,7 +396,7 @@
         }
       ],
       "images": {
-        "hero": "images/shops/placeholder.jpg",
+        "hero": "images/shops/kokubunji.jpg",
         "gallery": []
       }
     },
@@ -459,7 +459,7 @@
         }
       ],
       "images": {
-        "hero": "images/shops/placeholder.jpg",
+        "hero": "images/shops/musashikosugi.jpg",
         "gallery": []
       }
     },
@@ -521,7 +521,7 @@
         }
       ],
       "images": {
-        "hero": "images/shops/placeholder.jpg",
+        "hero": "images/shops/shiki.jpg",
         "gallery": []
       }
     },
@@ -587,7 +587,7 @@
         }
       ],
       "images": {
-        "hero": "images/shops/placeholder.jpg",
+        "hero": "images/shops/shimokitazawa.jpg",
         "gallery": []
       }
     },
@@ -649,7 +649,7 @@
         }
       ],
       "images": {
-        "hero": "images/shops/placeholder.jpg",
+        "hero": "images/shops/soka.jpg",
         "gallery": []
       }
     }
