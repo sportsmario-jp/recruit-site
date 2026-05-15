@@ -234,10 +234,18 @@ ${renderHeader('detail')}
 
     <section class="shop-jobs" id="jobs">
       <div class="shop-jobs__inner">
-        <h2>募集職種</h2>
+        <h2>この店舗のアルバイト・パート募集</h2>
         <div class="job-cards">
           ${jobsHtml}
         </div>
+        <aside class="fulltime-notice">
+          <p class="fulltime-notice__title">💼 正社員でのご応募について</p>
+          <p class="fulltime-notice__text">正社員は<strong>本部採用</strong>のため、店舗単位での募集はおこなっていません。勤務地はご本人の希望を考慮した上で配属となります。</p>
+          <div class="fulltime-notice__links">
+            <a href="../graduate.html" class="fulltime-notice__link fulltime-notice__link--grad">新卒採用（2027年度）→</a>
+            <a href="../index.html#entry" class="fulltime-notice__link fulltime-notice__link--career">中途・キャリア採用（通年）→</a>
+          </div>
+        </aside>
       </div>
     </section>
 
@@ -338,7 +346,15 @@ ${renderHeader('list')}
     <section class="shops-hero">
       <div class="shops-hero__inner">
         <h1>募集店舗一覧</h1>
-        <p>各店舗の特色と募集要項をご確認いただけます。気になる店舗から直接応募いただけます。</p>
+        <p>このページでは<strong>アルバイト・パートの募集店舗</strong>をご紹介しています。気になる店舗から直接応募いただけます。</p>
+        <aside class="shops-hero__notice">
+          <p class="shops-hero__notice-title">💼 正社員でのご応募について</p>
+          <p class="shops-hero__notice-text">正社員は<strong>本部採用</strong>のため、店舗指定の募集はおこなっていません。下記からご応募ください。</p>
+          <div class="shops-hero__notice-links">
+            <a href="../graduate.html" class="shops-hero__notice-link shops-hero__notice-link--grad">新卒採用（2027年度）→</a>
+            <a href="../index.html#entry" class="shops-hero__notice-link shops-hero__notice-link--career">中途・キャリア採用（通年）→</a>
+          </div>
+        </aside>
       </div>
     </section>
 

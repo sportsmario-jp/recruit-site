@@ -457,6 +457,117 @@
 
 /* フッターは styles.css の共通スタイルを使用 */
 
+/* ---------- 正社員ガイダンス（一覧ヒーロー内） ---------- */
+.shops-hero__notice {
+  max-width: 680px;
+  margin: 36px auto 0;
+  padding: 20px 24px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  text-align: left;
+}
+.shops-hero__notice-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 6px;
+}
+.shops-hero__notice-text {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.7;
+  margin: 0 0 12px;
+}
+.shops-hero__notice-text strong {
+  color: #fff;
+}
+.shops-hero__notice-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.shops-hero__notice-link {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 100px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s, background 0.2s;
+}
+.shops-hero__notice-link--grad {
+  background: #1565c0;
+  color: #fff;
+}
+.shops-hero__notice-link--grad:hover {
+  background: #1976d2;
+  transform: translateY(-1px);
+}
+.shops-hero__notice-link--career {
+  background: #00a844;
+  color: #fff;
+}
+.shops-hero__notice-link--career:hover {
+  background: #00c853;
+  transform: translateY(-1px);
+}
+
+/* ---------- 正社員ガイダンス（店舗詳細） ---------- */
+.fulltime-notice {
+  margin-top: 32px;
+  padding: 24px 28px;
+  background: #f5f9ff;
+  border: 1px solid #d9e6f7;
+  border-left: 4px solid #1565c0;
+  border-radius: 12px;
+}
+.fulltime-notice__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1565c0;
+  margin: 0 0 8px;
+}
+.fulltime-notice__text {
+  font-size: 0.9rem;
+  color: #333;
+  line-height: 1.8;
+  margin: 0 0 16px;
+}
+.fulltime-notice__text strong {
+  color: #1565c0;
+}
+.fulltime-notice__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.fulltime-notice__link {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s, background 0.2s;
+}
+.fulltime-notice__link--grad {
+  background: #1565c0;
+  color: #fff;
+}
+.fulltime-notice__link--grad:hover {
+  background: #1976d2;
+  transform: translateY(-1px);
+}
+.fulltime-notice__link--career {
+  background: #00a844;
+  color: #fff;
+}
+.fulltime-notice__link--career:hover {
+  background: #00c853;
+  transform: translateY(-1px);
+}
+
 /* ---------- レスポンシブ ---------- */
 @media (max-width: 768px) {
   .shop-meta dl,
@@ -471,5 +582,13 @@
   }
   .job-card {
     padding: 24px 20px;
+  }
+  .fulltime-notice {
+    padding: 20px 18px;
+  }
+  .fulltime-notice__link,
+  .shops-hero__notice-link {
+    flex: 1 1 100%;
+    text-align: center;
   }
 }
