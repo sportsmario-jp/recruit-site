@@ -7,12 +7,33 @@
 ```json
 {
   "shops": [ /* 店舗オブジェクトの配列 */ ],
+  "nonStorePositions": [ /* 店舗外ポジション配列（EC事業部・本部など） */ ],
   "meta": {
     "lastUpdated": "2026-04-09",
     "version": "1.0.0"
   }
 }
 ```
+
+## nonStorePositions 配列
+
+店舗ではないアルバイト・パート募集（EC事業部、本社オフィスなど）。
+配列が空の場合、shops/index ページに該当セクションは表示されません。
+
+| フィールド | 型 | 必須 | 説明 |
+|---|---|---|---|
+| `id` | string | ○ | ユニークID（応募フォームに渡される） 例: `ec-staff`、`honbu-admin` |
+| `department` | string | ○ | 部署キー `ec` / `honbu` |
+| `departmentLabel` | string | ○ | 部署表示名 例: `EC事業部` / `本部` |
+| `position` | string | ○ | 職種名 例: `EC運営アシスタント` |
+| `location` | string | ○ | 勤務地（住所または「本社」等） |
+| `salary` | object | ○ | 給与情報（店舗の Job と同じ型） |
+| `hours` | string | ○ | 勤務時間 |
+| `description` | string |  | 仕事内容（1〜2文、任意） |
+| `benefits` | string[] |  | 待遇・福利厚生（任意） |
+| `requirements` | string[] |  | 応募資格（任意） |
+| `recruiting` | boolean |  | 募集中フラグ。`false` で「募集休止中」表示（デフォルト `true`） |
+| `active` | boolean |  | `false` で完全非表示（デフォルト `true`） |
 
 ## 店舗オブジェクト構造
 

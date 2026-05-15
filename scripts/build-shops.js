@@ -267,8 +267,42 @@ ${renderFooter()}
 
 // ---------- 店舗一覧ページ生成 ----------
 
-function renderShopsIndex(shops, brands) {
+function renderNonStoreCard(pos) {
+  const recruiting = pos.recruiting !== false;
+  const statusBadge = recruiting
+    ? ''
+    : '<span class="shop-card__status">現在募集休止中</span>';
+  const requirements = (pos.requirements || []).length
+    ? `<dt>応募資格</dt><dd>${pos.requirements.map((r) => escapeHtml(r)).join('、')}</dd>`
+    : '';
+  const benefits = (pos.benefits || []).length
+    ? `<dt>待遇</dt><dd>${pos.benefits.map((b) => escapeHtml(b)).join('、')}</dd>`
+    : '';
+  const category = encodeURIComponent('アルバイト・パート');
+  const entryUrl = `../index.html?shop=${escapeHtml(pos.id)}&category=${category}#application-form-wrap`;
+  const entryBtn = recruiting
+    ? `<a href="${entryUrl}" class="job-entry-btn">この職種に応募する →</a>`
+    : `<span class="job-entry-btn job-entry-btn--closed">現在この職種は募集を休止しています</span>`;
+  return `
+      <article class="non-store-card" data-recruiting="${recruiting}" data-dept="${escapeHtml(pos.department)}">
+        ${statusBadge}
+        <span class="non-store-card__dept">${escapeHtml(pos.departmentLabel)}</span>
+        <h3 class="non-store-card__title">${escapeHtml(pos.position)}</h3>
+        <dl class="non-store-card__meta">
+          <dt>勤務地</dt><dd>${escapeHtml(pos.location)}</dd>
+          <dt>給与</dt><dd>${escapeHtml(formatSalary(pos.salary))}</dd>
+          <dt>勤務時間</dt><dd>${escapeHtml(pos.hours)}</dd>
+          ${requirements}
+          ${benefits}
+        </dl>
+        ${pos.description ? `<p class="non-store-card__desc">${escapeHtml(pos.description)}</p>` : ''}
+        ${entryBtn}
+      </article>`;
+}
+
+function renderShopsIndex(shops, brands, nonStorePositions = []) {
   const activeShops = shops.filter((s) => s.active);
+  const activePositions = nonStorePositions.filter((p) => p.active !== false);
 
   // 店舗ごとに「アルバイト/パート枠で募集中の職種があるか」を判定
   const isShopRecruiting = (shop) =>
@@ -414,6 +448,20 @@ ${renderHeader('list')}
 
     <div class="shops-list" data-filter-mode="recruiting">
       ${sections}
+      ${
+        activePositions.length > 0
+          ? `
+      <section class="non-store-section" data-has-recruiting="${activePositions.some((p) => p.recruiting !== false)}">
+        <div class="brand-section__header">
+          <h2 class="brand-section__title">店舗以外のポジション</h2>
+          <p class="brand-section__tagline">EC事業部・本社オフィスでのアルバイト・パート募集</p>
+        </div>
+        <div class="non-store-grid">
+          ${activePositions.map(renderNonStoreCard).join('\n')}
+        </div>
+      </section>`
+          : ''
+      }
     </div>
   </main>
 
@@ -444,7 +492,7 @@ function main() {
     process.exit(1);
   }
 
-  const { shops = [], brands = {} } = data;
+  const { shops = [], brands = {}, nonStorePositions = [] } = data;
   if (shops.length === 0) {
     console.warn('⚠️  店舗データが空です');
   }
@@ -468,7 +516,7 @@ function main() {
   }
 
   // 店舗一覧ページ
-  const indexHtml = renderShopsIndex(shops, brands);
+  const indexHtml = renderShopsIndex(shops, brands, nonStorePositions);
   fs.writeFileSync(path.join(OUT_DIR, 'index.html'), indexHtml, 'utf8');
   console.log(`  ✓ index.html`);
 
