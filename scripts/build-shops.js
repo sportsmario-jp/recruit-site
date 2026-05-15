@@ -270,6 +270,13 @@ ${renderFooter()}
 function renderShopsIndex(shops, brands) {
   const activeShops = shops.filter((s) => s.active);
 
+  // 店舗ごとに「アルバイト/パート枠で募集中の職種があるか」を判定
+  const isShopRecruiting = (shop) =>
+    shop.jobs.some((j) => j.type !== 'fulltime' && j.recruiting !== false);
+
+  const recruitingCount = activeShops.filter(isShopRecruiting).length;
+  const totalCount = activeShops.length;
+
   // 業態別にグループ化
   const grouped = {};
   for (const shop of activeShops) {
@@ -280,10 +287,16 @@ function renderShopsIndex(shops, brands) {
   const sections = Object.entries(grouped)
     .map(([brandKey, shopsInBrand]) => {
       const brand = brands[brandKey] || { label: brandKey, color: '#00c853' };
+      const brandHasRecruiting = shopsInBrand.some(isShopRecruiting);
       const cards = shopsInBrand
-        .map(
-          (shop) => `
-        <a href="${escapeHtml(shop.id)}.html" class="shop-card" style="--brand-color: ${brand.color};">
+        .map((shop) => {
+          const recruiting = isShopRecruiting(shop);
+          const statusBadge = recruiting
+            ? ''
+            : '<span class="shop-card__status">現在募集停止中</span>';
+          return `
+        <a href="${escapeHtml(shop.id)}.html" class="shop-card" data-recruiting="${recruiting}" style="--brand-color: ${brand.color};">
+          ${statusBadge}
           <div class="shop-card__image" style="background-image: url('../${escapeHtml(shop.images.hero)}');">
             <span class="shop-card__brand">${escapeHtml(brand.label)}</span>
           </div>
@@ -295,17 +308,17 @@ function renderShopsIndex(shops, brands) {
                 .filter((j) => j.type !== 'fulltime')
                 .map(
                   (j) =>
-                    `<span class="job-tag job-tag--${escapeHtml(j.type)}">${escapeHtml(formatJobType(j.type))}</span>`
+                    `<span class="job-tag job-tag--${escapeHtml(j.type)}${j.recruiting === false ? ' job-tag--closed' : ''}">${escapeHtml(formatJobType(j.type))}${j.recruiting === false ? '（停止中）' : ''}</span>`
                 )
                 .join('')}
             </div>
             <span class="shop-card__more">詳細を見る →</span>
           </div>
-        </a>`
-        )
+        </a>`;
+        })
         .join('\n');
       return `
-      <section class="brand-section" style="--brand-color: ${brand.color};">
+      <section class="brand-section" data-has-recruiting="${brandHasRecruiting}" style="--brand-color: ${brand.color};">
         <div class="brand-section__header">
           <h2 class="brand-section__title">${escapeHtml(brand.label)}</h2>
           <p class="brand-section__tagline">${escapeHtml(brand.tagline || '')}</p>
@@ -316,6 +329,38 @@ function renderShopsIndex(shops, brands) {
       </section>`;
     })
     .join('\n');
+
+  const filterUi = `
+    <div class="shops-filter" data-recruiting-count="${recruitingCount}" data-total-count="${totalCount}">
+      <div class="shops-filter__counts">
+        <span class="shops-filter__count-main">募集中 <strong>${recruitingCount}</strong> 店舗</span>
+        <span class="shops-filter__count-total">／ 全 ${totalCount} 店舗</span>
+      </div>
+      <div class="shops-filter__toggle" role="tablist">
+        <button type="button" class="shops-filter__btn shops-filter__btn--active" data-filter="recruiting" role="tab" aria-selected="true">募集中のみ</button>
+        <button type="button" class="shops-filter__btn" data-filter="all" role="tab" aria-selected="false">全店舗を見る</button>
+      </div>
+    </div>`;
+
+  const filterScript = `
+  <script>
+  (function () {
+    var list = document.querySelector('.shops-list');
+    var btns = document.querySelectorAll('.shops-filter__btn');
+    if (!list || !btns.length) return;
+    btns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var mode = b.getAttribute('data-filter');
+        list.setAttribute('data-filter-mode', mode);
+        btns.forEach(function (x) {
+          var active = x === b;
+          x.classList.toggle('shops-filter__btn--active', active);
+          x.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+      });
+    });
+  })();
+  </script>`;
 
   return `<!DOCTYPE html>
 <html lang="ja">
@@ -365,11 +410,16 @@ ${renderHeader('list')}
       </div>
     </section>
 
-    ${sections}
+    ${filterUi}
+
+    <div class="shops-list" data-filter-mode="recruiting">
+      ${sections}
+    </div>
   </main>
 
 ${renderFooter()}
   <script src="../script.js"></script>
+${filterScript}
 </body>
 </html>
 `;

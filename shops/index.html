@@ -72,14 +72,28 @@
     </section>
 
     
-      <section class="brand-section" style="--brand-color: #222222;">
+    <div class="shops-filter" data-recruiting-count="2" data-total-count="10">
+      <div class="shops-filter__counts">
+        <span class="shops-filter__count-main">募集中 <strong>2</strong> 店舗</span>
+        <span class="shops-filter__count-total">／ 全 10 店舗</span>
+      </div>
+      <div class="shops-filter__toggle" role="tablist">
+        <button type="button" class="shops-filter__btn shops-filter__btn--active" data-filter="recruiting" role="tab" aria-selected="true">募集中のみ</button>
+        <button type="button" class="shops-filter__btn" data-filter="all" role="tab" aria-selected="false">全店舗を見る</button>
+      </div>
+    </div>
+
+    <div class="shops-list" data-filter-mode="recruiting">
+      
+      <section class="brand-section" data-has-recruiting="true" style="--brand-color: #222222;">
         <div class="brand-section__header">
           <h2 class="brand-section__title">STAND ON</h2>
           <p class="brand-section__tagline">カジュアルアウトドアセレクトショップ</p>
         </div>
         <div class="shop-grid">
           
-        <a href="kinshicho.html" class="shop-card" style="--brand-color: #222222;">
+        <a href="kinshicho.html" class="shop-card" data-recruiting="true" style="--brand-color: #222222;">
+          
           <div class="shop-card__image" style="background-image: url('../images/shops/kinshicho.jpg');">
             <span class="shop-card__brand">STAND ON</span>
           </div>
@@ -93,7 +107,8 @@
           </div>
         </a>
 
-        <a href="shonan-gate.html" class="shop-card" style="--brand-color: #222222;">
+        <a href="shonan-gate.html" class="shop-card" data-recruiting="false" style="--brand-color: #222222;">
+          <span class="shop-card__status">現在募集停止中</span>
           <div class="shop-card__image" style="background-image: url('../images/shops/shonan-gate.jpg');">
             <span class="shop-card__brand">STAND ON</span>
           </div>
@@ -101,7 +116,7 @@
             <h3 class="shop-card__name">STAND ON ODAKYU 湘南 GATE店</h3>
             <p class="shop-card__access">小田急線「藤沢駅」南口 徒歩2分 / JR東海道線「藤沢駅」南口 徒歩2分 / 江ノ島電鉄「藤沢駅」直結 徒歩約1分</p>
             <div class="shop-card__jobs">
-              <span class="job-tag job-tag--parttime">アルバイト・パート</span>
+              <span class="job-tag job-tag--parttime job-tag--closed">アルバイト・パート（停止中）</span>
             </div>
             <span class="shop-card__more">詳細を見る →</span>
           </div>
@@ -109,14 +124,15 @@
         </div>
       </section>
 
-      <section class="brand-section" style="--brand-color: #e64a19;">
+      <section class="brand-section" data-has-recruiting="false" style="--brand-color: #e64a19;">
         <div class="brand-section__header">
           <h2 class="brand-section__title">RUN &amp; FITNESS</h2>
           <p class="brand-section__tagline">ランニング・フィットネスセレクトショップ</p>
         </div>
         <div class="shop-grid">
           
-        <a href="ariake.html" class="shop-card" style="--brand-color: #e64a19;">
+        <a href="ariake.html" class="shop-card" data-recruiting="false" style="--brand-color: #e64a19;">
+          <span class="shop-card__status">現在募集停止中</span>
           <div class="shop-card__image" style="background-image: url('../images/shops/ariake.jpg');">
             <span class="shop-card__brand">RUN &amp; FITNESS</span>
           </div>
@@ -124,13 +140,14 @@
             <h3 class="shop-card__name">Run &amp; Fitness 有明ガーデン店</h3>
             <p class="shop-card__access">ゆりかもめ「有明駅」徒歩4分 / ゆりかもめ「有明テニスの森駅」徒歩3分 / りんかい線「国際展示場駅」徒歩6分</p>
             <div class="shop-card__jobs">
-              <span class="job-tag job-tag--parttime">アルバイト・パート</span>
+              <span class="job-tag job-tag--parttime job-tag--closed">アルバイト・パート（停止中）</span>
             </div>
             <span class="shop-card__more">詳細を見る →</span>
           </div>
         </a>
 
-        <a href="shinjuku.html" class="shop-card" style="--brand-color: #e64a19;">
+        <a href="shinjuku.html" class="shop-card" data-recruiting="false" style="--brand-color: #e64a19;">
+          <span class="shop-card__status">現在募集停止中</span>
           <div class="shop-card__image" style="background-image: url('../images/shops/shinjuku.jpg');">
             <span class="shop-card__brand">RUN &amp; FITNESS</span>
           </div>
@@ -138,13 +155,14 @@
             <h3 class="shop-card__name">Run &amp; Fitness 新宿タカシマヤ スポーツメゾン店</h3>
             <p class="shop-card__access">JR「新宿駅」新南改札・ミライナタワー改札 徒歩2分 / 東京メトロ副都心線「新宿三丁目駅」徒歩3分 / バスタ新宿より徒歩2分</p>
             <div class="shop-card__jobs">
-              <span class="job-tag job-tag--parttime">アルバイト・パート</span>
+              <span class="job-tag job-tag--parttime job-tag--closed">アルバイト・パート（停止中）</span>
             </div>
             <span class="shop-card__more">詳細を見る →</span>
           </div>
         </a>
 
-        <a href="kameari.html" class="shop-card" style="--brand-color: #e64a19;">
+        <a href="kameari.html" class="shop-card" data-recruiting="false" style="--brand-color: #e64a19;">
+          <span class="shop-card__status">現在募集停止中</span>
           <div class="shop-card__image" style="background-image: url('../images/shops/kameari.jpg');">
             <span class="shop-card__brand">RUN &amp; FITNESS</span>
           </div>
@@ -152,13 +170,14 @@
             <h3 class="shop-card__name">Run &amp; Fitness アリオ亀有店</h3>
             <p class="shop-card__access">JR常磐線「亀有駅」南口 徒歩5分</p>
             <div class="shop-card__jobs">
-              <span class="job-tag job-tag--parttime">アルバイト・パート</span>
+              <span class="job-tag job-tag--parttime job-tag--closed">アルバイト・パート（停止中）</span>
             </div>
             <span class="shop-card__more">詳細を見る →</span>
           </div>
         </a>
 
-        <a href="kokubunji.html" class="shop-card" style="--brand-color: #e64a19;">
+        <a href="kokubunji.html" class="shop-card" data-recruiting="false" style="--brand-color: #e64a19;">
+          <span class="shop-card__status">現在募集停止中</span>
           <div class="shop-card__image" style="background-image: url('../images/shops/kokubunji.jpg');">
             <span class="shop-card__brand">RUN &amp; FITNESS</span>
           </div>
@@ -166,13 +185,14 @@
             <h3 class="shop-card__name">Run &amp; Fitness 国分寺マルイ店</h3>
             <p class="shop-card__access">JR中央線・西武線「国分寺駅」南口 徒歩1分</p>
             <div class="shop-card__jobs">
-              <span class="job-tag job-tag--parttime">アルバイト・パート</span>
+              <span class="job-tag job-tag--parttime job-tag--closed">アルバイト・パート（停止中）</span>
             </div>
             <span class="shop-card__more">詳細を見る →</span>
           </div>
         </a>
 
-        <a href="musashikosugi.html" class="shop-card" style="--brand-color: #e64a19;">
+        <a href="musashikosugi.html" class="shop-card" data-recruiting="false" style="--brand-color: #e64a19;">
+          <span class="shop-card__status">現在募集停止中</span>
           <div class="shop-card__image" style="background-image: url('../images/shops/musashikosugi.jpg');">
             <span class="shop-card__brand">RUN &amp; FITNESS</span>
           </div>
@@ -180,13 +200,14 @@
             <h3 class="shop-card__name">Run &amp; Fitness グランツリー武蔵小杉店</h3>
             <p class="shop-card__access">東急東横線・JR横須賀線「武蔵小杉駅」徒歩4分</p>
             <div class="shop-card__jobs">
-              <span class="job-tag job-tag--parttime">アルバイト・パート</span>
+              <span class="job-tag job-tag--parttime job-tag--closed">アルバイト・パート（停止中）</span>
             </div>
             <span class="shop-card__more">詳細を見る →</span>
           </div>
         </a>
 
-        <a href="shiki.html" class="shop-card" style="--brand-color: #e64a19;">
+        <a href="shiki.html" class="shop-card" data-recruiting="false" style="--brand-color: #e64a19;">
+          <span class="shop-card__status">現在募集停止中</span>
           <div class="shop-card__image" style="background-image: url('../images/shops/shiki.jpg');">
             <span class="shop-card__brand">RUN &amp; FITNESS</span>
           </div>
@@ -194,7 +215,7 @@
             <h3 class="shop-card__name">Run &amp; Fitness マルイファミリー志木店</h3>
             <p class="shop-card__access">東武東上線「志木駅」東口1 徒歩2分</p>
             <div class="shop-card__jobs">
-              <span class="job-tag job-tag--parttime">アルバイト・パート</span>
+              <span class="job-tag job-tag--parttime job-tag--closed">アルバイト・パート（停止中）</span>
             </div>
             <span class="shop-card__more">詳細を見る →</span>
           </div>
@@ -202,14 +223,15 @@
         </div>
       </section>
 
-      <section class="brand-section" style="--brand-color: #1a3c1a;">
+      <section class="brand-section" data-has-recruiting="false" style="--brand-color: #1a3c1a;">
         <div class="brand-section__header">
           <h2 class="brand-section__title">BASEBALL MARIO</h2>
           <p class="brand-section__tagline">野球専門店</p>
         </div>
         <div class="shop-grid">
           
-        <a href="shimokitazawa.html" class="shop-card" style="--brand-color: #1a3c1a;">
+        <a href="shimokitazawa.html" class="shop-card" data-recruiting="false" style="--brand-color: #1a3c1a;">
+          <span class="shop-card__status">現在募集停止中</span>
           <div class="shop-card__image" style="background-image: url('../images/shops/shimokitazawa.jpg');">
             <span class="shop-card__brand">BASEBALL MARIO</span>
           </div>
@@ -217,7 +239,7 @@
             <h3 class="shop-card__name">ベースボールマリオ 下北沢店</h3>
             <p class="shop-card__access">小田急線「下北沢駅」南西口 徒歩1分</p>
             <div class="shop-card__jobs">
-              <span class="job-tag job-tag--parttime">アルバイト・パート</span>
+              <span class="job-tag job-tag--parttime job-tag--closed">アルバイト・パート（停止中）</span>
             </div>
             <span class="shop-card__more">詳細を見る →</span>
           </div>
@@ -225,14 +247,15 @@
         </div>
       </section>
 
-      <section class="brand-section" style="--brand-color: #7FCC30;">
+      <section class="brand-section" data-has-recruiting="true" style="--brand-color: #7FCC30;">
         <div class="brand-section__header">
           <h2 class="brand-section__title">SPORTS MARIO</h2>
           <p class="brand-section__tagline">総合スポーツショップ</p>
         </div>
         <div class="shop-grid">
           
-        <a href="soka.html" class="shop-card" style="--brand-color: #7FCC30;">
+        <a href="soka.html" class="shop-card" data-recruiting="true" style="--brand-color: #7FCC30;">
+          
           <div class="shop-card__image" style="background-image: url('../images/shops/soka.jpg');">
             <span class="shop-card__brand">SPORTS MARIO</span>
           </div>
@@ -247,6 +270,7 @@
         </a>
         </div>
       </section>
+    </div>
   </main>
 
   <footer class="site-footer">
@@ -266,5 +290,24 @@
     </div>
   </footer>
   <script src="../script.js"></script>
+
+  <script>
+  (function () {
+    var list = document.querySelector('.shops-list');
+    var btns = document.querySelectorAll('.shops-filter__btn');
+    if (!list || !btns.length) return;
+    btns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var mode = b.getAttribute('data-filter');
+        list.setAttribute('data-filter-mode', mode);
+        btns.forEach(function (x) {
+          var active = x === b;
+          x.classList.toggle('shops-filter__btn--active', active);
+          x.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+      });
+    });
+  })();
+  </script>
 </body>
 </html>

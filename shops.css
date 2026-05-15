@@ -42,6 +42,102 @@
   line-height: 1.8;
 }
 
+/* ---------- 募集中フィルタ ---------- */
+.shops-filter {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 36px 24px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.shops-filter__counts {
+  color: #333;
+  font-size: 0.95rem;
+}
+.shops-filter__count-main strong {
+  color: #00a844;
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin: 0 4px;
+}
+.shops-filter__count-total {
+  color: #888;
+  font-size: 0.85rem;
+  margin-left: 6px;
+}
+.shops-filter__toggle {
+  display: inline-flex;
+  background: #f0f0f0;
+  border-radius: 100px;
+  padding: 4px;
+  gap: 0;
+}
+.shops-filter__btn {
+  padding: 9px 20px;
+  border: none;
+  background: transparent;
+  color: #666;
+  font-size: 0.88rem;
+  font-weight: 700;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+.shops-filter__btn:hover {
+  color: #333;
+}
+.shops-filter__btn--active {
+  background: #fff;
+  color: #00a844;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+.shops-filter__btn--active:hover {
+  color: #00a844;
+}
+
+/* 募集停止カードのスタイル */
+.shop-card {
+  position: relative;
+}
+.shop-card__status {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(80, 80, 80, 0.92);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 100px;
+  z-index: 2;
+  letter-spacing: 0.05em;
+}
+.shop-card[data-recruiting="false"] .shop-card__image {
+  filter: grayscale(0.7);
+  opacity: 0.7;
+}
+.shop-card[data-recruiting="false"] .shop-card__name,
+.shop-card[data-recruiting="false"] .shop-card__access {
+  color: #888;
+}
+.job-tag--closed {
+  background: #ddd;
+  color: #888;
+  text-decoration: line-through;
+}
+
+/* フィルタモード: 募集中のみ */
+.shops-list[data-filter-mode="recruiting"] .shop-card[data-recruiting="false"] {
+  display: none;
+}
+.shops-list[data-filter-mode="recruiting"] .brand-section[data-has-recruiting="false"] {
+  display: none;
+}
+
 /* ---------- 業態別セクション ---------- */
 .brand-section {
   padding: 80px 24px;
