@@ -156,7 +156,11 @@ function renderJob(job, shopId) {
 
 function renderShopPage(shop, brands) {
   const brand = brands[shop.brand] || { label: shop.brandLabel, color: '#00c853' };
-  const jobsHtml = shop.jobs.map(job => renderJob(job, shop.id)).join('\n');
+  // 正社員(fulltime)は本部採用のため店舗ページには表示しない
+  const jobsHtml = shop.jobs
+    .filter((job) => job.type !== 'fulltime')
+    .map(job => renderJob(job, shop.id))
+    .join('\n');
   const appealHtml = shop.appeal
     .map((a) => `<li>${escapeHtml(a)}</li>`)
     .join('\n');
@@ -273,6 +277,7 @@ function renderShopsIndex(shops, brands) {
             <p class="shop-card__access">${escapeHtml(shop.access)}</p>
             <div class="shop-card__jobs">
               ${shop.jobs
+                .filter((j) => j.type !== 'fulltime')
                 .map(
                   (j) =>
                     `<span class="job-tag job-tag--${escapeHtml(j.type)}">${escapeHtml(formatJobType(j.type))}</span>`
