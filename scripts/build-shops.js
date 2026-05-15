@@ -132,7 +132,7 @@ function renderJob(job, shopId) {
   const categoryMap = { fulltime: '中途・キャリア採用', parttime: 'アルバイト・パート', contract: '中途・キャリア採用' };
   const category = encodeURIComponent(categoryMap[job.type] || '');
   const entryUrl = `../index.html?shop=${escapeHtml(shopId)}&category=${category}#application-form-wrap`;
-  // recruiting: false の場合は募集停止表示
+  // recruiting: false の場合は募集休止表示
   const isRecruiting = job.recruiting !== false;
   const entryButton = isRecruiting
     ? `<a href="${entryUrl}" class="job-entry-btn">この職種に応募する →</a>`
@@ -293,7 +293,7 @@ function renderShopsIndex(shops, brands) {
           const recruiting = isShopRecruiting(shop);
           const statusBadge = recruiting
             ? ''
-            : '<span class="shop-card__status">現在募集停止中</span>';
+            : '<span class="shop-card__status">現在募集休止中</span>';
           return `
         <a href="${escapeHtml(shop.id)}.html" class="shop-card" data-recruiting="${recruiting}" style="--brand-color: ${brand.color};">
           ${statusBadge}
@@ -308,7 +308,7 @@ function renderShopsIndex(shops, brands) {
                 .filter((j) => j.type !== 'fulltime')
                 .map(
                   (j) =>
-                    `<span class="job-tag job-tag--${escapeHtml(j.type)}${j.recruiting === false ? ' job-tag--closed' : ''}">${escapeHtml(formatJobType(j.type))}${j.recruiting === false ? '（停止中）' : ''}</span>`
+                    `<span class="job-tag job-tag--${escapeHtml(j.type)}${j.recruiting === false ? ' job-tag--closed' : ''}">${escapeHtml(formatJobType(j.type))}${j.recruiting === false ? '（休止中）' : ''}</span>`
                 )
                 .join('')}
             </div>

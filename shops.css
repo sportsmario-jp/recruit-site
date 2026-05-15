@@ -99,7 +99,7 @@
   color: #00a844;
 }
 
-/* 募集停止カードのスタイル */
+/* 募集休止カードのスタイル */
 .shop-card {
   position: relative;
 }
@@ -499,7 +499,7 @@
   background: #00a844;
 }
 
-/* 募集停止 */
+/* 募集休止 */
 .job-card--closed {
   opacity: 0.6;
 }
