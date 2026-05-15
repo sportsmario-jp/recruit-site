@@ -80,14 +80,15 @@ function renderHeader(currentPage) {
       </a>
       <nav class="global-nav" id="globalNav">
         <ul class="nav-list">
-          <li><a href="../index.html#numbers">NUMBERS</a></li>
-          <li><a href="../index.html#vision">VISION</a></li>
-          <li><a href="../index.html#reward">REWARD</a></li>
-          <li><a href="../index.html#fff">FFF</a></li>
-          <li><a href="../index.html#smsa">SMSA</a></li>
-          <li><a href="../index.html#career">CAREER</a></li>
-          <li><a href="../index.html#work">WORK</a></li>
-          <li><a href="index.html"${currentPage === 'list' ? ' class="nav-current"' : ''}>SHOPS</a></li>
+          <li><a href="../index.html#numbers">NUMBERS<span class="nav-sub">数字で見る</span></a></li>
+          <li><a href="../index.html#vision">VISION<span class="nav-sub">ビジョン</span></a></li>
+          <li><a href="../index.html#reward">REWARD<span class="nav-sub">報酬制度</span></a></li>
+          <li><a href="../index.html#fff">FFF<span class="nav-sub">働く楽しさ</span></a></li>
+          <li><a href="../index.html#smsa">SMSA<span class="nav-sub">インフルエンサー</span></a></li>
+          <li><a href="../index.html#career">CAREER<span class="nav-sub">キャリア</span></a></li>
+          <li><a href="../index.html#work">WORK<span class="nav-sub">仕事内容</span></a></li>
+          <li><a href="../index.html#people">PEOPLE<span class="nav-sub">社員紹介</span></a></li>
+          <li><a href="index.html"${currentPage === 'list' ? ' class="nav-current"' : ''}>SHOPS<span class="nav-sub">募集店舗</span></a></li>
           <li><a href="../index.html#entry" class="nav-cta">ENTRY</a></li>
           <li><a href="../graduate.html" class="nav-cta nav-cta--grad">新卒採用</a></li>
         </ul>
@@ -165,6 +166,12 @@ function renderShopPage(shop, brands) {
     .map((a) => `<li>${escapeHtml(a)}</li>`)
     .join('\n');
 
+  // ヒーロー背景: 実写真がある場合は暗いオーバーレイ付きで適用、無ければCSS既定のグラデ
+  const hasHeroPhoto = shop.images.hero && !shop.images.hero.includes('placeholder');
+  const heroStyle = hasHeroPhoto
+    ? `--brand-color: ${brand.color}; background: linear-gradient(rgba(15,15,15,0.55), rgba(15,15,15,0.78)), url('../${escapeHtml(shop.images.hero)}') center/cover no-repeat;`
+    : `--brand-color: ${brand.color};`;
+
   const title = (shop.seo && shop.seo.title) || `${shop.name} | 採用情報 | スポーツマリオ`;
   const description =
     (shop.seo && shop.seo.description) || shop.description.slice(0, 120);
@@ -202,7 +209,7 @@ function renderShopPage(shop, brands) {
 ${renderHeader('detail')}
 
   <main class="shop-main">
-    <section class="shop-hero" style="--brand-color: ${brand.color};">
+    <section class="shop-hero${hasHeroPhoto ? ' shop-hero--photo' : ''}" style="${heroStyle}">
       <div class="shop-hero__inner">
         <div class="shop-brand-badge">${escapeHtml(brand.label)}</div>
         <h1 class="shop-title">${escapeHtml(shop.name)}</h1>
