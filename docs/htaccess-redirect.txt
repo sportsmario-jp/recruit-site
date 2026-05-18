@@ -1,0 +1,90 @@
+# =====================================================================
+# 旧採用サイト → 新採用サイト 301リダイレクト設定
+# =====================================================================
+# 設置場所: XServer の /home/[user]/sportsmario.co.jp/public_html/recruit/.htaccess
+# 旧URL:    https://sportsmario.co.jp/recruit/...
+# 新URL:    https://recruit.sportsmario.co.jp/...
+# 設置日:   2026-05-XX
+# =====================================================================
+
+# WordPressより先に評価されるよう、ファイル冒頭に配置する。
+# 既存の WordPress 用 .htaccess ブロック（# BEGIN WordPress 〜 # END WordPress）
+# よりも上に挿入すること。
+
+RewriteEngine On
+RewriteBase /recruit/
+
+# ---------------------------------------------------------------------
+# 1. 個別店舗ページ（数字ID形式）
+# ---------------------------------------------------------------------
+RewriteRule ^177/?$  https://recruit.sportsmario.co.jp/shops/kinshicho.html      [R=301,L]
+RewriteRule ^492/?$  https://recruit.sportsmario.co.jp/shops/musashikosugi.html  [R=301,L]
+RewriteRule ^739/?$  https://recruit.sportsmario.co.jp/shops/kameari.html        [R=301,L]
+RewriteRule ^902/?$  https://recruit.sportsmario.co.jp/shops/shonan-gate.html    [R=301,L]
+RewriteRule ^1224/?$ https://recruit.sportsmario.co.jp/graduate.html             [R=301,L]
+RewriteRule ^1420/?$ https://recruit.sportsmario.co.jp/shops/shimokitazawa.html  [R=301,L]
+
+# ---------------------------------------------------------------------
+# 2. 新卒応募ページ（過去年度含めて全て graduate.html へ）
+# ---------------------------------------------------------------------
+RewriteRule ^entry2020graduate/?$ https://recruit.sportsmario.co.jp/graduate.html [R=301,L]
+RewriteRule ^entry2022graduate/?$ https://recruit.sportsmario.co.jp/graduate.html [R=301,L]
+RewriteRule ^entry2026graduate/?$ https://recruit.sportsmario.co.jp/graduate.html [R=301,L]
+
+# ---------------------------------------------------------------------
+# 3. インタビュー記事（旧6名 → 新3名へ近いものを割当）
+# ---------------------------------------------------------------------
+RewriteRule ^business/apparel-sales-staff/interview-andou/?$    https://recruit.sportsmario.co.jp/interview-01.html [R=301,L]
+RewriteRule ^business/apparel-sales-staff/interview-oyama/?$    https://recruit.sportsmario.co.jp/interview-02.html [R=301,L]
+RewriteRule ^business/goods-sales-staff/interview-nasu/?$       https://recruit.sportsmario.co.jp/interview-01.html [R=301,L]
+RewriteRule ^business/goods-sales-staff/interview-sawaki/?$     https://recruit.sportsmario.co.jp/interview-02.html [R=301,L]
+RewriteRule ^business/goods-sales-staff/interview-watanabe/?$   https://recruit.sportsmario.co.jp/interview-03.html [R=301,L]
+RewriteRule ^business/web-staff/interview-web/?$                https://recruit.sportsmario.co.jp/interview-03.html [R=301,L]
+RewriteRule ^business/packing-staff/interview-packing/?$        https://recruit.sportsmario.co.jp/ [R=301,L]
+
+# ---------------------------------------------------------------------
+# 4. 業種カテゴリページ
+# ---------------------------------------------------------------------
+RewriteRule ^business/apparel-sales-staff/?$ https://recruit.sportsmario.co.jp/shops/ [R=301,L]
+RewriteRule ^business/goods-sales-staff/?$   https://recruit.sportsmario.co.jp/shops/ [R=301,L]
+RewriteRule ^business/packing-staff/?$       https://recruit.sportsmario.co.jp/shops/ [R=301,L]
+RewriteRule ^business/web-staff/?$           https://recruit.sportsmario.co.jp/shops/ [R=301,L]
+RewriteRule ^business/?$                     https://recruit.sportsmario.co.jp/shops/ [R=301,L]
+RewriteRule ^business_test/?$                https://recruit.sportsmario.co.jp/ [R=301,L]
+
+# ---------------------------------------------------------------------
+# 5. その他の固定ページ
+# ---------------------------------------------------------------------
+RewriteRule ^career/?$       https://recruit.sportsmario.co.jp/#entry [R=301,L]
+RewriteRule ^company/?$      https://recruit.sportsmario.co.jp/#about [R=301,L]
+RewriteRule ^entry_thanks/?$ https://recruit.sportsmario.co.jp/ [R=301,L]
+RewriteRule ^healthcheck/?$  https://recruit.sportsmario.co.jp/ [R=301,L]
+
+# ---------------------------------------------------------------------
+# 6. /recruit/ TOP
+# ---------------------------------------------------------------------
+RewriteRule ^/?$ https://recruit.sportsmario.co.jp/ [R=301,L]
+
+# ---------------------------------------------------------------------
+# 7. フォールバック（上記いずれにも該当しない /recruit/* は新サイトTOPへ）
+# WordPressの未知ページ・古い添付ファイルURL・将来の不明URL対策
+# ※ wp-recruit/wp-content/ などのアセットは除外（画像が表示できなくなる前に
+#    旧サイトテーマ削除と同時に対応）
+# ---------------------------------------------------------------------
+RewriteCond %{REQUEST_URI} !^/recruit/wp-recruit/
+RewriteCond %{REQUEST_URI} !^/recruit/wp-content/
+RewriteCond %{REQUEST_URI} !^/recruit/wp-admin/
+RewriteCond %{REQUEST_URI} !^/recruit/wp-includes/
+RewriteCond %{REQUEST_URI} !\.(jpg|jpeg|png|gif|webp|svg|ico|css|js|woff2?|ttf|eot|pdf)$ [NC]
+RewriteRule .* https://recruit.sportsmario.co.jp/ [R=301,L]
+
+# =====================================================================
+# 確認用テストURL（設置後に必ず動作確認すること）
+# =====================================================================
+# https://sportsmario.co.jp/recruit/                              → /
+# https://sportsmario.co.jp/recruit/177/                          → /shops/kinshicho.html
+# https://sportsmario.co.jp/recruit/902/                          → /shops/shonan-gate.html
+# https://sportsmario.co.jp/recruit/entry2026graduate/            → /graduate.html
+# https://sportsmario.co.jp/recruit/business/                     → /shops/
+# https://sportsmario.co.jp/recruit/career/                       → /#entry
+# https://sportsmario.co.jp/recruit/unknown-page/                 → /
