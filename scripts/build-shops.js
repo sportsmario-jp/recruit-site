@@ -193,14 +193,14 @@ function renderShopPage(shop, brands) {
   <meta property="og:title" content="${escapeHtml(title)}">
   <meta property="og:description" content="${escapeHtml(description)}">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://sportsmario-recruit.netlify.app/shops/${escapeHtml(shop.id)}.html">
-  <meta property="og:image" content="https://sportsmario-recruit.netlify.app/images/og-image.jpg">
+  <meta property="og:url" content="https://recruit.sportsmario.co.jp/shops/${escapeHtml(shop.id)}.html">
+  <meta property="og:image" content="https://recruit.sportsmario.co.jp/images/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:site_name" content="スポーツマリオ採用情報">
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://sportsmario-recruit.netlify.app/images/og-image.jpg">
+  <meta name="twitter:image" content="https://recruit.sportsmario.co.jp/images/og-image.jpg">
 
   <link rel="stylesheet" href="../styles.css">
   <link rel="stylesheet" href="../shops.css">
@@ -413,14 +413,14 @@ function renderShopsIndex(shops, brands, nonStorePositions = []) {
   <meta property="og:title" content="店舗一覧 | 採用情報 | スポーツマリオ">
   <meta property="og:description" content="スポーツマリオの募集店舗一覧。各店舗の特色と募集要項をご確認いただけます。">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://sportsmario-recruit.netlify.app/shops/">
-  <meta property="og:image" content="https://sportsmario-recruit.netlify.app/images/og-image.jpg">
+  <meta property="og:url" content="https://recruit.sportsmario.co.jp/shops/">
+  <meta property="og:image" content="https://recruit.sportsmario.co.jp/images/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:site_name" content="スポーツマリオ採用情報">
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://sportsmario-recruit.netlify.app/images/og-image.jpg">
+  <meta name="twitter:image" content="https://recruit.sportsmario.co.jp/images/og-image.jpg">
 
   <link rel="stylesheet" href="../styles.css">
   <link rel="stylesheet" href="../shops.css">

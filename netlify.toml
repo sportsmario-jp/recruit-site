@@ -2,8 +2,8 @@
 # https://docs.netlify.com/configure-builds/file-based-configuration/
 
 [build]
-  # ビルドコマンド: shops.json から店舗ページを生成
-  command = "node scripts/build-shops.js && node scripts/inject-shop-options.js"
+  # ビルドコマンド: shops.json から店舗ページ生成 → フォーム店舗セレクト注入 → sitemap.xml生成
+  command = "node scripts/build-shops.js && node scripts/inject-shop-options.js && node scripts/build-sitemap.js"
   # 公開ディレクトリ（ルート）
   publish = "."
 

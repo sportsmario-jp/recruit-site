@@ -2,8 +2,9 @@
 
 SMSA（Sports Mario Staff Ambassador）を含む、スポーツマリオの採用サイトソースコードです。
 
-- **公開URL（予定）**: https://recruit.sportsmario.co.jp
+- **公開URL**: https://recruit.sportsmario.co.jp
 - **ホスティング**: Netlify（GitHub連携による自動デプロイ）
+- **Netlifyサブドメイン**: https://sportsmario-recruit.netlify.app （バックアップ）
 - **管理組織**: [sportsmario-jp](https://github.com/sportsmario-jp)
 
 ## 採用区分
