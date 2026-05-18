@@ -1,0 +1,14 @@
+version: 1
+frontend:
+  phases:
+    build:
+      commands:
+        - node scripts/build-shops.js
+        - node scripts/inject-shop-options.js
+        - node scripts/build-sitemap.js
+  artifacts:
+    baseDirectory: /
+    files:
+      - '**/*'
+  cache:
+    paths: []
