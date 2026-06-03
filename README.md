@@ -3,8 +3,8 @@
 SMSA（Sports Mario Staff Ambassador）を含む、スポーツマリオの採用サイトソースコードです。
 
 - **公開URL**: https://recruit.sportsmario.co.jp
-- **ホスティング**: Netlify（GitHub連携による自動デプロイ）
-- **Netlifyサブドメイン**: https://sportsmario-recruit.netlify.app （バックアップ）
+- **ホスティング**: AWS Amplify Hosting（CodeCommit連携による自動デプロイ）
+- **検証URL**: https://main.d2rmouledjn9wo.amplifyapp.com/
 - **管理組織**: [sportsmario-jp](https://github.com/sportsmario-jp)
 
 ## 採用区分
@@ -49,8 +49,12 @@ npx http-server -p 8080
 ## 更新作業の流れ
 
 1. Claude Code で作業（店舗情報の更新、文言修正、画像差替え等）
-2. 変更内容は自動で Git にコミット・プッシュ
-3. GitHub に push されると Netlify が自動で本番にデプロイ（約1〜2分）
+2. 変更内容を Git にコミット
+3. `git push codecommit main` で AWS CodeCommit に push
+4. AWS Amplify が自動で本番にビルド・デプロイ（約2〜5分）
+5. `git push origin main` で GitHub にもバックアップ push
+
+⚠️ **本番反映は CodeCommit 経由のみ**。GitHub だけに push しても本番には反映されません。
 
 ## 担当者
 

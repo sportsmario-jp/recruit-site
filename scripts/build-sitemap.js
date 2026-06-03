@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * sitemap.xml を生成する。
- * Netlify ビルド時に build-shops.js の後に実行する想定。
+ * AWS Amplify ビルド時に build-shops.js の後に実行する想定（amplify.yml参照）。
  */
 
 const fs = require('fs');

@@ -1,7 +1,7 @@
 # 旧採用サイトから新採用サイトへの301リダイレクト 設置手順
 
 ## 前提条件
-- 新採用サイト（recruit.sportsmario.co.jp / Netlify）が稼働中であること
+- 新採用サイト（recruit.sportsmario.co.jp / AWS Amplify）が稼働中であること
 - SSL証明書が有効化済みであること
 - XServerファイルマネージャーまたはFTP/SSH接続できること
 
