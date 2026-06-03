@@ -47,3 +47,5 @@ images/スクリーンショット*.PNG
 
 # Claude Code の個人用権限設定（マシンごとに異なるためコミットしない）
 .claude/settings.local.json
+docs/slides/node_modules/
+docs/slides/package-lock.json
