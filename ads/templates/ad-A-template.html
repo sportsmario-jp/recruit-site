@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Ad A Pattern B - 好きを仕事に（背景クリア）</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+    overflow: hidden;
+  }
+
+  .ad {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    overflow: hidden;
+  }
+
+  /* 写真エリア（背景クリア、フィルタなし） */
+  .ad__photo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-image: url('../../images/hero-bg.jpg');
+    background-size: cover;
+    background-position: center top;
+  }
+
+  /* ブランドマーク（写真の上、半透明背景） */
+  .ad__brand {
+    position: absolute;
+    top: 56px;
+    left: 56px;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,255,255,0.96);
+    padding: 10px 18px 10px 14px;
+    border-radius: 50px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  }
+  .ad__brand-mark {
+    width: 44px;
+    height: 44px;
+    background: #7FCC30;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 22px;
+    color: #fff;
+  }
+  .ad__brand-text { font-weight: 700; font-size: 16px; color: #1a1a1a; letter-spacing: 1px; }
+  .ad__brand-sub { font-size: 11px; color: #555; margin-top: 2px; }
+
+  /* 2027バッジ */
+  .ad__badge {
+    position: absolute;
+    top: 56px;
+    right: 56px;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .ad__badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 32px;
+    background: #FFEB3B;
+    color: #1a1a1a;
+    font-weight: 900;
+    font-size: 32px;
+    border-radius: 999px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    white-space: nowrap;
+  }
+  .ad__badge-pill::before {
+    content: "●";
+    color: #e53935;
+    font-size: 20px;
+  }
+  .ad__badge-sub {
+    margin-top: 12px;
+    font-size: 17px;
+    color: #fff;
+    background: rgba(0,0,0,0.65);
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  /* 白カード（テキストエリア） */
+  .ad__card {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    padding: 48px 56px 56px;
+    border-top: 6px solid #7FCC30;
+  }
+  .ad__tagline {
+    font-size: 14px;
+    font-weight: 700;
+    color: #7FCC30;
+    letter-spacing: 2.5px;
+    margin-bottom: 10px;
+  }
+  .ad__headline {
+    font-size: 68px;
+    font-weight: 900;
+    line-height: 1.12;
+    margin-bottom: 18px;
+    letter-spacing: -1px;
+    color: #1a1a1a;
+  }
+  .ad__headline em {
+    color: #7FCC30;
+    font-style: normal;
+  }
+  .ad__sub {
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 24px;
+    color: #444;
+  }
+  .ad__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 32px;
+    background: #7FCC30;
+    color: #fff;
+    font-weight: 700;
+    font-size: 20px;
+    border-radius: 999px;
+    box-shadow: 0 8px 24px rgba(127,204,48,0.4);
+  }
+  .ad__cta::after { content: "→"; font-size: 22px; }
+  .ad__url {
+    margin-top: 18px;
+    font-size: 13px;
+    color: #888;
+    letter-spacing: 0.5px;
+  }
+
+  /* === サイズ別レイアウト === */
+  body.s1x1 .ad { width: 1080px; height: 1080px; }
+  body.s1x1 .ad__photo { height: 580px; }
+  body.s1x1 .ad__card { height: 500px; }
+
+  body.s4x5 .ad { width: 1080px; height: 1350px; }
+  body.s4x5 .ad__photo { height: 760px; }
+  body.s4x5 .ad__card { height: 590px; }
+  body.s4x5 .ad__headline { font-size: 78px; }
+
+  body.s9x16 .ad { width: 1080px; height: 1920px; }
+  body.s9x16 .ad__photo { height: 1080px; }
+  body.s9x16 .ad__card { height: 840px; padding: 64px 72px 80px; }
+  body.s9x16 .ad__brand { top: 64px; left: 64px; padding: 12px 22px 12px 16px; }
+  body.s9x16 .ad__brand-mark { width: 52px; height: 52px; font-size: 26px; }
+  body.s9x16 .ad__brand-text { font-size: 18px; }
+  body.s9x16 .ad__brand-sub { font-size: 12px; }
+  body.s9x16 .ad__badge { top: 64px; right: 64px; }
+  body.s9x16 .ad__badge-pill { font-size: 42px; padding: 22px 40px; }
+  body.s9x16 .ad__badge-sub { font-size: 20px; }
+  body.s9x16 .ad__tagline { font-size: 18px; }
+  body.s9x16 .ad__headline { font-size: 96px; }
+  body.s9x16 .ad__sub { font-size: 26px; }
+  body.s9x16 .ad__cta { font-size: 26px; padding: 24px 40px; }
+  body.s9x16 .ad__url { font-size: 16px; margin-top: 28px; }
+</style>
+</head>
+<body class="s1x1">
+  <div class="ad">
+    <div class="ad__photo"></div>
+    <div class="ad__brand">
+      <div class="ad__brand-mark">SM</div>
+      <div>
+        <div class="ad__brand-text">SPORTS MARIO</div>
+        <div class="ad__brand-sub">採用サイト</div>
+      </div>
+    </div>
+    <div class="ad__badge">
+      <div class="ad__badge-pill">2027年卒 新卒採用</div>
+      <div class="ad__badge-sub">エントリー受付中</div>
+    </div>
+    <div class="ad__card">
+      <div class="ad__tagline">SMSA - SPORTS MARIO STAFF AMBASSADOR</div>
+      <h1 class="ad__headline">
+        好きを仕事に、<br>
+        好きを<em>武器</em>に。
+      </h1>
+      <p class="ad__sub">
+        スポーツとファッションの専門家として、<br>
+        あなた自身のファンをつくる仕事へ。
+      </p>
+      <div class="ad__cta">エントリーする</div>
+      <div class="ad__url">recruit.sportsmario.co.jp</div>
+    </div>
+  </div>
+</body>
+</html>

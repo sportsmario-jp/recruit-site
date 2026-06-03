@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Ad B - WEB会社説明会（ストーリー版）</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+    overflow: hidden;
+  }
+
+  .ad {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    overflow: hidden;
+  }
+
+  /* 写真エリア（フィルタなし） */
+  .ad__photo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-image: url('../../images/graduate-hero.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+
+  /* ブランドマーク */
+  .ad__brand {
+    position: absolute;
+    top: 48px;
+    left: 56px;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,255,255,0.96);
+    padding: 10px 18px 10px 14px;
+    border-radius: 50px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  }
+  .ad__brand-mark {
+    width: 44px;
+    height: 44px;
+    background: #7FCC30;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 22px;
+    color: #fff;
+  }
+  .ad__brand-text { font-weight: 700; font-size: 16px; color: #1a1a1a; letter-spacing: 1px; }
+  .ad__brand-sub { font-size: 11px; color: #555; margin-top: 2px; }
+
+  /* 2027バッジ */
+  .ad__badge {
+    position: absolute;
+    top: 48px;
+    right: 56px;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .ad__badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 32px;
+    background: #FFEB3B;
+    color: #0d47a1;
+    font-weight: 900;
+    font-size: 32px;
+    border-radius: 999px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    white-space: nowrap;
+  }
+  .ad__badge-pill::before {
+    content: "●";
+    color: #e53935;
+    font-size: 20px;
+  }
+  .ad__badge-sub {
+    margin-top: 12px;
+    font-size: 17px;
+    color: #fff;
+    background: rgba(0,0,0,0.65);
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  /* 写真エリアのヘッドライン */
+  .ad__headline-wrap {
+    position: absolute;
+    left: 56px;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .ad__label {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 18px;
+    background: #1565c0;
+    color: #fff;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  }
+  .ad__headline {
+    font-size: 60px;
+    font-weight: 900;
+    line-height: 1.1;
+    color: #fff;
+    text-shadow: 0 4px 18px rgba(0,0,0,0.7), 0 2px 6px rgba(0,0,0,0.5);
+    letter-spacing: -1px;
+  }
+  .ad__headline em {
+    background: linear-gradient(180deg, transparent 60%, #FFEB3B 60%);
+    color: #fff;
+    font-style: normal;
+    padding: 0 6px;
+  }
+
+  /* 下部白カード */
+  .ad__card {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    padding: 40px 56px 48px;
+    border-top: 6px solid #1565c0;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .ad__info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .ad__info {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .ad__info-icon {
+    width: 44px;
+    height: 44px;
+    background: #e3f2fd;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .ad__info-label { font-size: 11px; color: #666; margin-bottom: 2px; }
+  .ad__info-value { font-size: 17px; font-weight: 700; color: #1a1a1a; line-height: 1.3; }
+  .ad__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 32px;
+    background: #1565c0;
+    color: #fff;
+    font-weight: 700;
+    font-size: 20px;
+    border-radius: 999px;
+    align-self: flex-start;
+    box-shadow: 0 8px 24px rgba(21,101,192,0.3);
+  }
+  .ad__cta::after { content: "→"; font-size: 22px; }
+  .ad__url {
+    position: absolute;
+    right: 22px;
+    bottom: 16px;
+    font-size: 12px;
+    color: #999;
+  }
+
+  /* === 9:16 (1080x1920) === */
+  body.s9x16 .ad { width: 1080px; height: 1920px; }
+  body.s9x16 .ad__photo { height: 1280px; }
+  body.s9x16 .ad__headline-wrap { bottom: 700px; left: 64px; gap: 16px; }
+  body.s9x16 .ad__headline { font-size: 86px; }
+  body.s9x16 .ad__label { font-size: 20px; padding: 10px 22px; }
+  body.s9x16 .ad__card { height: 640px; padding: 56px 72px 64px; gap: 36px; }
+  body.s9x16 .ad__brand { top: 64px; left: 64px; padding: 12px 22px 12px 16px; }
+  body.s9x16 .ad__brand-mark { width: 52px; height: 52px; font-size: 26px; }
+  body.s9x16 .ad__brand-text { font-size: 18px; }
+  body.s9x16 .ad__brand-sub { font-size: 12px; }
+  body.s9x16 .ad__badge { top: 64px; right: 64px; }
+  body.s9x16 .ad__badge-pill { font-size: 42px; padding: 22px 40px; }
+  body.s9x16 .ad__badge-sub { font-size: 20px; }
+  body.s9x16 .ad__info-icon { width: 56px; height: 56px; font-size: 28px; border-radius: 12px; }
+  body.s9x16 .ad__info-label { font-size: 14px; }
+  body.s9x16 .ad__info-value { font-size: 22px; }
+  body.s9x16 .ad__cta { font-size: 26px; padding: 22px 38px; }
+</style>
+</head>
+<body class="s9x16">
+  <div class="ad">
+    <div class="ad__photo"></div>
+    <div class="ad__brand">
+      <div class="ad__brand-mark">SM</div>
+      <div>
+        <div class="ad__brand-text">SPORTS MARIO</div>
+        <div class="ad__brand-sub">採用サイト</div>
+      </div>
+    </div>
+    <div class="ad__badge">
+      <div class="ad__badge-pill">2027年卒 新卒採用</div>
+      <div class="ad__badge-sub">エントリー受付中</div>
+    </div>
+    <div class="ad__headline-wrap">
+      <span class="ad__label">📅 毎週水曜 15:00</span>
+      <h1 class="ad__headline">
+        まずは話を<br>
+        <em>聞いてみる。</em>
+      </h1>
+    </div>
+    <div class="ad__card">
+      <div class="ad__info-grid">
+        <div class="ad__info">
+          <div class="ad__info-icon">🎥</div>
+          <div>
+            <div class="ad__info-label">形式</div>
+            <div class="ad__info-value">Google Meet</div>
+          </div>
+        </div>
+        <div class="ad__info">
+          <div class="ad__info-icon">⏱</div>
+          <div>
+            <div class="ad__info-label">所要時間</div>
+            <div class="ad__info-value">約60分</div>
+          </div>
+        </div>
+        <div class="ad__info">
+          <div class="ad__info-icon">👤</div>
+          <div>
+            <div class="ad__info-label">服装</div>
+            <div class="ad__info-value">自由・顔出し任意</div>
+          </div>
+        </div>
+        <div class="ad__info">
+          <div class="ad__info-icon">💴</div>
+          <div>
+            <div class="ad__info-label">参加費</div>
+            <div class="ad__info-value">無料</div>
+          </div>
+        </div>
+      </div>
+      <div class="ad__cta">説明会に申し込む</div>
+    </div>
+    <div class="ad__url">recruit.sportsmario.co.jp</div>
+  </div>
+</body>
+</html>
