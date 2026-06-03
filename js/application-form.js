@@ -92,29 +92,37 @@
     console.warn('URL パラメータの解析に失敗:', e);
   }
 
-  // WEB説明会の水曜日日程を自動生成（今日から8週分）
+  // WEB説明会の水曜日日程を自動生成（次の水曜から8週分・当日と除外日は含まない）
+  // 除外したい日付（YYYY-MM-DD 形式）。担当者都合等で開催できない週はここに追加する。
+  const EXCLUDED_SEMINAR_DATES = [
+    '2026-06-10', // 担当者予定あり
+  ];
   const seminarSelect = document.getElementById('app-seminarDate');
   if (seminarSelect) {
     const today = new Date();
-    for (let i = 0; i < 8; i++) {
-      const d = new Date(today);
-      // 次の水曜日を計算（0=日,3=水）
-      const daysUntilWed = (3 - d.getDay() + 7) % 7 || (i === 0 ? 0 : 7);
-      d.setDate(d.getDate() + daysUntilWed + (i > 0 ? (i - (daysUntilWed === 0 ? 0 : 1)) * 7 : 0));
-      // もっとシンプルに: i週後の水曜日
-      const wed = new Date(today);
-      wed.setDate(today.getDate() + ((3 - today.getDay() + 7) % 7) + i * 7);
-      if (wed <= today) { wed.setDate(wed.getDate() + 7); }
-      // 8月末（2026-08-31）を超えたら終了
-      if (wed > new Date('2026-08-31')) break;
+    today.setHours(0, 0, 0, 0); // 日付単位で比較するため時刻リセット
+    // 今日含めず次の水曜日までの日数（今日が水曜なら 7、それ以外は 1〜6）
+    const daysUntilNextWed = ((3 - today.getDay() + 7) % 7) || 7;
+    const firstWed = new Date(today);
+    firstWed.setDate(today.getDate() + daysUntilNextWed);
+
+    const cutoff = new Date('2026-08-31');
+    let added = 0;
+    // 除外日があっても 8 件表示するため最大 16 週まで走査
+    for (let i = 0; i < 16 && added < 8; i++) {
+      const wed = new Date(firstWed);
+      wed.setDate(firstWed.getDate() + i * 7);
+      if (wed > cutoff) break;
       const m = wed.getMonth() + 1;
       const dd = wed.getDate();
-      const label = `${m}月${dd}日（水）15:00〜`;
       const value = `${wed.getFullYear()}-${String(m).padStart(2,'0')}-${String(dd).padStart(2,'0')}`;
+      if (EXCLUDED_SEMINAR_DATES.includes(value)) continue;
+      const label = `${m}月${dd}日（水）15:00〜`;
       const opt = document.createElement('option');
       opt.value = value;
       opt.textContent = label;
       seminarSelect.appendChild(opt);
+      added++;
     }
   }
 

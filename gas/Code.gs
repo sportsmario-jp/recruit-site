@@ -50,6 +50,18 @@ const CONFIG = {
   // 未登録の状態でこの値を指定するとメール送信時にエラーになるため、
   // 登録完了までは空文字にしておくと実行者アドレスがそのまま使われる。
   FROM_EMAIL: 'corporate.division@sports-mario.jp',
+
+  // ===== WEB会社説明会（Google Calendar 連携） =====
+  // 桐原さん個人カレンダー（イベント設置先）
+  SEMINAR_CALENDAR_ID: 'yusuke.kirihara@sports-mario.jp',
+  // 説明会の Google Meet URL（毎週同じURLで運用）
+  SEMINAR_MEET_URL: 'https://meet.google.com/uiz-cdhs-vnw',
+  // カレンダーイベントを検索するためのタイトル一部
+  // "SMSA WEB会社説明会（2027卒）" を含む水曜イベントを探す
+  SEMINAR_EVENT_TITLE_KEYWORD: 'SMSA',
+  // 説明会の開始時刻（時:分）と所要時間（分）
+  SEMINAR_START_HOUR: 15,
+  SEMINAR_DURATION_MIN: 60,
 };
 
 // ========= エントリーポイント =========
@@ -78,11 +90,14 @@ function doPost(e) {
     // スプレッドシートに追記
     const row = appendApplication(payload);
 
+    // 説明会希望日があればカレンダーにゲスト追加（新卒のみ）
+    const seminarInfo = addApplicantToSeminar(payload);
+
     // 採用担当者に通知メール送信
-    notifyStaff(payload, row);
+    notifyStaff(payload, row, seminarInfo);
 
     // 応募者に自動返信メール送信
-    sendAutoReply(payload);
+    sendAutoReply(payload, seminarInfo);
 
     return jsonResponse({ status: 'ok', message: '応募を受け付けました' });
   } catch (err) {
@@ -131,6 +146,7 @@ function appendApplication(payload) {
     payload.message || '',                        // P: 志望動機・メッセージ
     payload.source || '',                         // Q: 流入元（あなたを知ったきっかけ）
     payload.userAgent || '',                      // R: User Agent
+    payload.seminarDate || '',                    // S: 説明会希望日（新卒用）
   ];
 
   sheet.appendRow(row);
@@ -151,16 +167,78 @@ function getNotifyEmails() {
     .filter((email) => email && isValidEmail(email));
 }
 
+// ========= Google Calendar 連携 =========
+
+/**
+ * 応募者を該当週のWEB説明会カレンダーイベントにゲスト追加する
+ * - payload.category === '新卒採用' かつ payload.seminarDate がある場合のみ実行
+ * - 該当日の15:00〜16:00 のSMSA説明会イベントを見つけてゲスト追加
+ * 戻り値: { added: boolean, count: number, error?: string }
+ */
+function addApplicantToSeminar(payload) {
+  // 説明会希望日が未指定なら何もしない
+  if (!payload.seminarDate) return { added: false, count: 0 };
+  if (payload.category !== '新卒採用') return { added: false, count: 0 };
+  if (!payload.email) return { added: false, count: 0 };
+
+  try {
+    const calendar = CalendarApp.getCalendarById(CONFIG.SEMINAR_CALENDAR_ID);
+    if (!calendar) {
+      console.warn('カレンダーが見つかりません: ' + CONFIG.SEMINAR_CALENDAR_ID);
+      return { added: false, count: 0, error: 'calendar not found' };
+    }
+
+    // 説明会希望日（YYYY-MM-DD）から該当日の開始/終了時刻を生成
+    const [y, m, d] = payload.seminarDate.split('-').map(Number);
+    const start = new Date(y, m - 1, d, CONFIG.SEMINAR_START_HOUR, 0, 0);
+    const end = new Date(start.getTime() + CONFIG.SEMINAR_DURATION_MIN * 60 * 1000);
+
+    // 該当時間帯のイベントを取得し、タイトルに SMSA を含むものを探す
+    const events = calendar.getEvents(start, end);
+    const target = events.find((e) =>
+      e.getTitle().indexOf(CONFIG.SEMINAR_EVENT_TITLE_KEYWORD) >= 0
+    );
+
+    if (!target) {
+      console.warn('該当する説明会イベントが見つかりません: ' + payload.seminarDate);
+      return { added: false, count: 0, error: 'event not found' };
+    }
+
+    // 既にゲスト登録済みかチェック
+    const existingGuests = target.getGuestList().map((g) => g.getEmail().toLowerCase());
+    if (!existingGuests.includes(payload.email.toLowerCase())) {
+      target.addGuest(payload.email);
+    }
+
+    // 最新のゲスト数を取得
+    const guestCount = target.getGuestList().length;
+    return { added: true, count: guestCount };
+  } catch (err) {
+    console.error('カレンダー連携エラー: ' + err.toString());
+    return { added: false, count: 0, error: err.toString() };
+  }
+}
+
 // ========= メール送信 =========
 
 /**
  * 採用担当者に通知メール送信
  */
-function notifyStaff(payload, rowNumber) {
+function notifyStaff(payload, rowNumber, seminarInfo) {
   const recipients = getNotifyEmails();
   if (recipients.length === 0) {
     console.warn('通知先メールが設定されていません');
     return;
+  }
+
+  // 説明会カレンダー登録結果の表示用文言
+  let seminarStatusLine = null;
+  if (payload.seminarDate) {
+    if (seminarInfo && seminarInfo.added) {
+      seminarStatusLine = `カレンダー: ✓ ゲスト登録済み（現在 ${seminarInfo.count} 名）`;
+    } else if (seminarInfo && seminarInfo.error) {
+      seminarStatusLine = `カレンダー: ✗ 登録失敗（${seminarInfo.error}）手動で対応してください`;
+    }
   }
 
   const subject = `【採用応募】${payload.category} - ${payload.name} 様`;
@@ -181,10 +259,12 @@ function notifyStaff(payload, rowNumber) {
     payload.gender ? `性別: ${payload.gender}` : '',
     payload.prefecture ? `都道府県: ${payload.prefecture}` : '',
     payload.currentStatus ? `現況: ${payload.currentStatus}` : '',
-    payload.graduationYear ? `卒業予定: ${payload.graduationYear}` : '',
-    payload.school ? `学校: ${payload.school}` : '',
-    payload.snsUrl ? `SNS URL: ${payload.snsUrl}` : '',
-    payload.followers ? `フォロワー数: ${payload.followers}` : '',
+    payload.graduationYear ? `卒業予定: ${payload.graduationYear}` : null,
+    payload.school ? `学校: ${payload.school}` : null,
+    payload.seminarDate ? `説明会希望日: ${payload.seminarDate}（水）15:00〜` : null,
+    seminarStatusLine,
+    payload.snsUrl ? `SNS URL: ${payload.snsUrl}` : null,
+    payload.followers ? `フォロワー数: ${payload.followers}` : null,
     '',
     '【志望動機・メッセージ】',
     payload.message || '（記入なし）',
@@ -210,8 +290,27 @@ function notifyStaff(payload, rowNumber) {
 /**
  * 応募者本人に自動返信メールを送信
  */
-function sendAutoReply(payload) {
+function sendAutoReply(payload, seminarInfo) {
   const subject = `【${CONFIG.COMPANY_NAME}】応募を受け付けました`;
+
+  // 説明会希望日が指定されていれば、Meet URL を含むセクションを差し込む
+  const seminarSection = payload.seminarDate
+    ? [
+        '',
+        '【WEB会社説明会のご案内】',
+        `日時: ${payload.seminarDate}（水）15:00〜16:00`,
+        'お時間になりましたら、下記URLからご参加ください。',
+        '（開始5分前のアクセスを推奨します）',
+        '',
+        '▶ Google Meet',
+        CONFIG.SEMINAR_MEET_URL,
+        '',
+        '・服装自由、顔出し任意',
+        '・所要時間 約60分',
+        '・カレンダー予定もお送りしました（招待メールをご確認ください）',
+      ]
+    : [];
+
   const body = [
     `${payload.name} 様`,
     '',
@@ -224,7 +323,9 @@ function sendAutoReply(payload) {
     `お名前: ${payload.name || '-'}`,
     `メールアドレス: ${payload.email || '-'}`,
     `電話番号: ${payload.phone || '-'}`,
+    payload.seminarDate ? `説明会希望日: ${payload.seminarDate}（水）15:00〜` : null,
     '━━━━━━━━━━━━━━━━━━',
+    ...seminarSection,
     '',
     '採用担当より、2〜5営業日以内にご連絡を差し上げます。',
     '今しばらくお待ちくださいませ。',
@@ -238,7 +339,9 @@ function sendAutoReply(payload) {
     '採用担当',
     CONFIG.SITE_URL,
     '━━━━━━━━━━━━━━━━━━',
-  ].join('\n');
+  ]
+    .filter((line) => line !== null && line !== undefined)
+    .join('\n');
 
   const replyOptions = {
     name: CONFIG.SENDER_NAME,
@@ -290,6 +393,7 @@ function initApplicationsSheet(ss) {
     '志望動機',
     '流入元',
     'User Agent',
+    '説明会希望日',
   ];
 
   // ヘッダー行を書き込み（既に書かれていても上書き）
