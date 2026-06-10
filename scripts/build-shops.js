@@ -185,8 +185,7 @@ function renderShopPage(shop, brands) {
   <meta name="description" content="${escapeHtml(description)}">
 
   <!-- Favicon -->
-  <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="../images/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
 
   <!-- OGP / Twitter Card -->
@@ -405,8 +404,7 @@ function renderShopsIndex(shops, brands, nonStorePositions = []) {
   <meta name="description" content="スポーツマリオの募集店舗一覧。STAND ON、RUN & FITNESS、BASEBALL MARIO、MARIO SELECTなど、各店舗の募集要項をご確認いただけます。">
 
   <!-- Favicon -->
-  <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="../images/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
 
   <!-- OGP / Twitter Card -->
