@@ -213,6 +213,10 @@
       const result = await response.json().catch(() => ({ status: 'error', message: 'レスポンス解析エラー' }));
 
       if (result.status === 'ok') {
+        // GTM: エントリーフォーム送信成功イベント（コンバージョン計測用）
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ 'event': 'entry_form_success' });
+
         showStatus('success', CONFIG.SUCCESS_MESSAGE || '応募を受け付けました。');
         form.reset();
         updateConditionalFields();

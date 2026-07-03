@@ -181,6 +181,15 @@ function renderShopPage(shop, brands) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQPSNWBC');</script>
+  <!-- End Google Tag Manager -->
+
   <title>${escapeHtml(title)}</title>
   <meta name="description" content="${escapeHtml(description)}">
 
@@ -205,6 +214,10 @@ function renderShopPage(shop, brands) {
   <link rel="stylesheet" href="../shops.css">
 </head>
 <body class="shop-detail-page">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQPSNWBC"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 ${renderHeader('detail')}
 
   <main class="shop-main">
@@ -400,6 +413,15 @@ function renderShopsIndex(shops, brands, nonStorePositions = []) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQPSNWBC');</script>
+  <!-- End Google Tag Manager -->
+
   <title>店舗一覧 | 採用情報 | スポーツマリオ</title>
   <meta name="description" content="スポーツマリオの募集店舗一覧。STAND ON、RUN & FITNESS、BASEBALL MARIO、MARIO SELECTなど、各店舗の募集要項をご確認いただけます。">
 
@@ -424,6 +446,10 @@ function renderShopsIndex(shops, brands, nonStorePositions = []) {
   <link rel="stylesheet" href="../shops.css">
 </head>
 <body class="shops-index-page">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQPSNWBC"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 ${renderHeader('list')}
 
   <main>
