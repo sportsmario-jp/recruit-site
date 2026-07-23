@@ -118,8 +118,10 @@ https://console.aws.amazon.com/iam/
 
 | 担当 | IAMユーザー名 | 発行日 |
 |---|---|---|
-| 桐原 裕輔（管理者） | `Cline_IAM` | 2026-05-XX |
-| （メンバー追加時に追記） | | |
+| 桐原 裕輔（管理者） | `Cline_IAM` / `kirihara` | 2025-02-07 |
+| 北島 | `recruit-staff-kitajima` | 2026-06-09 |
+| 渡木 | `recruit-staff-wataki` | 2026-06-09 |
+| 神山 | `recruit-staff-kamiyama` | 2026-06-09 |
 
 ---
 
