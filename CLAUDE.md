@@ -13,17 +13,20 @@
 ## デプロイ方式（最重要）
 
 ```
-ローカル編集
+ローカル編集 → commit
    ↓
-git push codecommit main  ← 本番反映（必須）
-git push origin main      ← GitHubバックアップ（任意だが推奨）
+npm run deploy   ← これ1発でOK（codecommit と origin の両方へ正しい順でpush）
    ↓
 AWS Amplify が自動ビルド → デプロイ（約2〜5分）
    ↓
 recruit.sportsmario.co.jp に反映
 ```
 
-⚠️ **`git push codecommit main` を忘れると本番に反映されません。** GitHubだけのpushは無効です。
+**`npm run deploy` の中身** = `git push codecommit main && git push origin main`
+- `codecommit` への push が **本番反映（必須）**、`origin`(GitHub) はバックアップ
+- 手動でやる場合も必ず両方。**`git push origin main` だけでは本番に反映されません。**
+
+⚠️ 本番ホスティングは **AWS Amplify + CodeCommit** 連携です（**Netlifyではありません**）。`codecommit` への push を忘れると本番に反映されません。
 
 ## Gitリモート
 

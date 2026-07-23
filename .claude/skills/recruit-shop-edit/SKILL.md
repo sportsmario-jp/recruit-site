@@ -33,9 +33,8 @@ description: >
 5. **ビルドを実行**: `node scripts/build-shops.js`
 6. **生成結果を目視確認**: `shops/` 配下のHTMLが正しく更新されたか
 7. **コミット**: 具体的な変更内容を日本語で記述
-8. **CodeCommit にプッシュ**: `git push codecommit main` → Amplify が自動デプロイ
-9. **GitHub にもプッシュ**: `git push origin main`（バックアップ用）
-10. **報告**: 変更内容と本番反映予定時刻（約2〜5分後）をユーザーに伝える
+8. **デプロイ**: **`npm run deploy`** を実行（= `git push codecommit main && git push origin main`）。codecommit=本番反映（Amplify自動デプロイ）、origin=GitHubバックアップ。**この1コマンドで両方pushされる**
+9. **報告**: 変更内容と本番反映予定時刻（約2〜5分後）をユーザーに伝える
 
 ## 依頼パターン別の対応
 
@@ -161,7 +160,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 5. **画像ファイルは事前に `images/shops/` に配置**してからパスを記述
 6. **ビルド失敗時はコミット・プッシュしない**（Amplifyが失敗デプロイを検知する）
 7. **機密情報（社外秘の数値等）を shops.json に書かない**（GitHubはpublic）
-8. **必ずCodeCommitとGitHubの両方にpush**（CodeCommit=本番、GitHub=バックアップ）
+8. **pushは `npm run deploy` を使う**（codecommit=本番 と origin=バックアップ の両方に一括push）。個別にやる場合も **`git push origin main` 単独で終わらせない**（本番はcodecommit経由のみ）
 
 ## トラブルシューティング
 

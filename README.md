@@ -50,11 +50,12 @@ npx http-server -p 8080
 
 1. Claude Code で作業（店舗情報の更新、文言修正、画像差替え等）
 2. 変更内容を Git にコミット
-3. `git push codecommit main` で AWS CodeCommit に push
+3. **`npm run deploy`** を実行 … これ1発で `codecommit`（本番）と `origin`（GitHubバックアップ）へ正しい順にpush
 4. AWS Amplify が自動で本番にビルド・デプロイ（約2〜5分）
-5. `git push origin main` で GitHub にもバックアップ push
 
-⚠️ **本番反映は CodeCommit 経由のみ**。GitHub だけに push しても本番には反映されません。
+`npm run deploy` = `git push codecommit main && git push origin main`
+
+⚠️ **本番反映は CodeCommit 経由のみ**（AWS Amplify連携。**Netlifyではありません**）。GitHub(`origin`) だけに push しても本番には反映されません。
 
 ## 担当者
 
