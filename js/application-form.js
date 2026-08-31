@@ -106,7 +106,7 @@
     const firstWed = new Date(today);
     firstWed.setDate(today.getDate() + daysUntilNextWed);
 
-    const cutoff = new Date('2026-08-31');
+    const cutoff = new Date('2026-09-30');
     let added = 0;
     // 除外日があっても 8 件表示するため最大 16 週まで走査
     for (let i = 0; i < 16 && added < 8; i++) {
