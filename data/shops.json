@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-29",
-    "version": "2.0.0",
+    "lastUpdated": "2026-09-05",
+    "version": "2.1.0",
     "note": "全10店舗の実データ（コーポレートサイト＋旧WP採用ページより移行）"
   },
   "brands": {
@@ -73,7 +73,7 @@
           "position": "アルバイト・パート",
           "salary": {
             "type": "hourly",
-            "min": 1250,
+            "min": 1280,
             "max": 1300
           },
           "hours": "週3日〜、1日5時間〜応相談（中番・遅番の勤務ができる方）",
@@ -142,7 +142,7 @@
           "position": "アルバイト・パート",
           "salary": {
             "type": "hourly",
-            "min": 1200,
+            "min": 1290,
             "note": "昇給あり"
           },
           "hours": "週2日〜、1日4時間〜応相談",
@@ -330,7 +330,7 @@
           "position": "アルバイト・パート",
           "salary": {
             "type": "hourly",
-            "min": 1250,
+            "min": 1280,
             "max": 1350,
             "note": "昇給あり"
           },
@@ -394,7 +394,7 @@
           "position": "アルバイト・パート",
           "salary": {
             "type": "hourly",
-            "min": 1200,
+            "min": 1300,
             "note": "昇給あり"
           },
           "hours": "週2日〜、1日4時間〜応相談",
@@ -403,7 +403,7 @@
             "社員割引",
             "有給休暇（消化率100%）"
           ],
-          "recruiting": false
+          "recruiting": true
         }
       ],
       "images": {
@@ -457,7 +457,7 @@
           "position": "アルバイト・パート",
           "salary": {
             "type": "hourly",
-            "min": 1180,
+            "min": 1280,
             "note": "昇給あり"
           },
           "hours": "週2日〜、1日4時間〜応相談",
@@ -521,7 +521,7 @@
           "position": "アルバイト・パート",
           "salary": {
             "type": "hourly",
-            "min": 1200,
+            "min": 1230,
             "note": "昇給あり"
           },
           "hours": "週2日〜、1日4時間〜応相談",
@@ -651,7 +651,7 @@
           "position": "アルバイト・パート",
           "salary": {
             "type": "hourly",
-            "min": 1170,
+            "min": 1200,
             "max": 1250
           },
           "hours": "週2日〜、1日4時間〜応相談",
