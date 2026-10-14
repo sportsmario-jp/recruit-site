@@ -99,3 +99,69 @@
   margin: 10px 0 0;
   line-height: 1.6;
 }
+
+/* スマホは横棒にする（縦棒のままだと1本が約15pxになり、年と金額の文字が重なって読めない） */
+@media (max-width: 600px) {
+  .company-chart { padding: 24px 16px 18px; }
+  .company-chart__title { margin-bottom: 16px; }
+  .company-chart__bars {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    height: auto;
+    padding: 0 48px 0 40px; /* 左＝年、右＝いちばん長い棒の金額のぶん */
+    border-bottom: none;
+  }
+  .cc-bar {
+    flex: none;
+    height: 26px;
+    border-left: 2px solid #ccc;
+  }
+  .cc-bar::before {
+    top: 4px;
+    bottom: 4px;
+    left: 0;
+    width: var(--h, 50%);
+    height: auto;
+    min-height: 0;
+    min-width: 4px;
+    border-radius: 0 3px 3px 0;
+  }
+  .cc-val {
+    top: 50%;
+    bottom: auto;
+    left: calc(var(--h, 50%) + 6px);
+    transform: translateY(-50%);
+    font-size: 0.75rem;
+  }
+  .cc-year {
+    top: 50%;
+    bottom: auto;
+    left: auto;
+    right: 100%;
+    margin-right: 8px;
+    transform: translateY(-50%);
+    font-size: 0.75rem;
+  }
+  /* 棒の下の「← →」の印は横棒では位置が合わないので、灰色の凡例にする */
+  .company-chart__covid-label {
+    margin: 12px 0 0;
+    width: auto;
+    border-top: none;
+    padding-top: 0;
+    font-size: 0.75rem;
+    color: #607d8b;
+  }
+  .company-chart__covid-label::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 6px;
+    border-radius: 2px;
+    background: #90a4ae;
+    vertical-align: -1px;
+  }
+  .company-chart__covid-label .cc-arrow { display: none; }
+  .company-chart__note { font-size: 0.75rem; }
+}
